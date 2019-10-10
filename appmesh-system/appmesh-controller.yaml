@@ -1,0 +1,11 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: appmesh-controller
+  namespace: appmesh-system
+spec:
+  releaseName: appmesh-controller
+  chart:
+    git: https://github.com/aws/eks-charts
+    ref: master
+    path: stable/appmesh-controller

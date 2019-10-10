@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: appmesh-prometheus
+  namespace: appmesh-system
+spec:
+  releaseName: appmesh-prometheus
+  chart:
+    git: https://github.com/aws/eks-charts
+    ref: master
+    path: stable/appmesh-prometheus
+  values:
+    retention: 2h
