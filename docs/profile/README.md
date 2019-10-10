@@ -2,7 +2,19 @@
 title: App Mesh Profile
 ---
 
-# Create an EKS cluster
+# App Mesh Profile
+
+The App Mesh integration with EKS is made out of the following components:
+
+* Kubernetes custom resources
+    * `mesh.appmesh.k8s.aws` defines a logical boundary for network traffic between the services 
+    * `virtualnode.appmesh.k8s.aws` defines a logical pointer to a Kubernetes workload
+    * `virtualservice.appmesh.k8s.aws` defines the routing rules for a workload inside the mesh
+* CRD controller - keeps the custom resources in sync with the App Mesh control plane
+* Admission controller - injects the Envoy sidecar and assigns Kubernetes pods to App Mesh virtual nodes
+* Metrics server - Prometheus instance that collects and stores Envoy's metrics
+
+## Create an EKS cluster
 
 Create an EKS cluster named `appmesh`:
 
@@ -16,7 +28,7 @@ eksctl create cluster --name=appmesh \
 
 The above command will create a two nodes cluster with App Mesh IAM policy attached to the EKS node instance role.
 
-## Setup the EKS profile
+## Install App Mesh
 
 Run the eksctl profile command (replace `GHUSER` with your GitHub username):
 
@@ -45,17 +57,7 @@ paste the Flux public key and click `Add key`.
 
 Once that is done, Flux will pick up the changes in the repository and deploy them to the cluster.
 
-### App Mesh components
-
-The App Mesh integration with EKS is made out of the following components:
-
-* Kubernetes custom resources
-    * `mesh.appmesh.k8s.aws` defines a logical boundary for network traffic between the services 
-    * `virtualnode.appmesh.k8s.aws` defines a logical pointer to a Kubernetes workload
-    * `virtualservice.appmesh.k8s.aws` defines the routing rules for a workload inside the mesh
-* CRD controller - keeps the custom resources in sync with the App Mesh control plane
-* Admission controller - injects the Envoy sidecar and assigns Kubernetes pods to App Mesh virtual nodes
-* Metrics server - Prometheus instance that collects and stores Envoy's metrics
+## App Mesh components
 
 List the installed components:
 

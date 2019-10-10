@@ -58,7 +58,7 @@ Verify the install with:
 eksctl version
 ```
 
-### fluxctl
+## fluxctl
 
 Install fluxctl for macOS:
 

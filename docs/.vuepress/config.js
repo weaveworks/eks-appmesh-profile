@@ -14,7 +14,7 @@ module.exports = {
             '/',
             '/intro/',
             '/prerequisites/',
-            '/eks-profile/',
+            '/profile/',
             '/canary/',
             '/test/'
         ]

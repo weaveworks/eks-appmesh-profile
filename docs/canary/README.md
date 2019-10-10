@@ -109,7 +109,9 @@ Validate that Flagger has initialized the canary:
 kubectl -n prod get canary
 ```
 
-## Automated canary promotion 
+## Automated canary promotion
+
+![App Mesh Canary Release](/eks-appmesh-flagger-stack.png)
 
 Install the load testing service to generate traffic during the canary analysis:
 
