@@ -1,0 +1,15 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: flagger
+  namespace: appmesh-system
+spec:
+  releaseName: flagger
+  chart:
+    repository: https://flagger.app
+    name: flagger
+    version: 0.19.0
+  values:
+    crd:
+      create: false
+    metricsServer: http://appmesh-prometheus:9090
