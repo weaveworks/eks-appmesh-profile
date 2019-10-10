@@ -18,16 +18,21 @@ eksctl create cluster --name=appmesh \
 
 The above command will create a two nodes cluster with App Mesh IAM policy attached to the EKS node instance role.
 
-Create a repository on GitHub and run the profile command (replace `GH-USERNAME` and `GH-REPO` with your own):
+Create a repository on GitHub and run the profile command
+(replace `GHUSER` and `GHREPO` values with your own):
 
 ```sh
-EKSCTL_EXPERIMENTAL=true eksctl enable profile \
+export GHUSER=username
+export GHREPO=repo
+export EKSCTL_EXPERIMENTAL=true
+
+eksctl enable profile \
 --cluster appmesh \
 --region=us-west-2 \
 --name=https://github.com/weaveworks/eks-appmesh-profile \
---git-url=git@github.com:GH-USERNAME/GH-REPO \
---git-user=GH-USERNAME \
---git-email=GH-USERNAME@users.noreply.github.com
+--git-url=git@github.com:${GHUSER}/${GHREPO} \
+--git-user=fluxcd \
+--git-email=${GHUSER}@users.noreply.github.com
 ```
 
 The command `eksctl enable profile` takes an existing EKS cluster and an empty repository 
