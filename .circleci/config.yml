@@ -1,0 +1,32 @@
+version: 2.1
+jobs:
+  kubeval:
+    docker:
+      - image: circleci/golang:1.13
+    steps:
+      - checkout
+      - run:
+          name: Install kubectl
+          command: sudo curl -L https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && sudo chmod +x /usr/local/bin/kubectl
+      - run:
+          name: Install kubeval
+          command: curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz && sudo mv kubeval /bin/kubeval
+      - run:
+          name: Install helm
+          command: curl -L https://storage.googleapis.com/kubernetes-helm/helm-v2.14.3-linux-amd64.tar.gz | tar xz && sudo mv linux-amd64/helm /bin/helm && sudo rm -rf linux-amd64
+      - run:
+          name: Initialize helm
+          command:  helm init --client-only --kubeconfig=$HOME/.kube/kubeconfig
+      - run:
+          name: Validate manifests
+          command: |
+            kubeval --strict --ignore-missing-schemas -d appmesh-system,kube-system
+workflows:
+  version: 2
+  validate:
+    jobs:
+      - kubeval:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
