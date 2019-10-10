@@ -9,4 +9,8 @@ spec:
     git: https://github.com/aws/eks-charts
     ref: master
     path: stable/appmesh-inject
-
+  values:
+    mesh:
+      create: true
+      name: "{{ .ClusterName }}"
+      discovery: dns
