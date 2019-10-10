@@ -1,0 +1,12 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: appmesh-inject
+  namespace: appmesh-system
+spec:
+  releaseName: appmesh-inject
+  chart:
+    git: https://github.com/aws/eks-charts
+    ref: master
+    path: stable/appmesh-inject
+
