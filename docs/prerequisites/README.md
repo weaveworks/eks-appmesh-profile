@@ -79,4 +79,10 @@ curl -sL https://fluxcd.io/install | sh
 export PATH=$PATH:$HOME/.fluxcd/bin
 ```
 
+Verify the install with:
+
+```sh
+fluxctl version
+```
+
 
