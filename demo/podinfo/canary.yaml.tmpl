@@ -25,7 +25,7 @@ spec:
     # can be http or grpc
     portName: http
     # App Mesh reference
-    meshName: appmesh
+    meshName: "{{ .ClusterName }}"
   # define the canary analysis timing and KPIs
   canaryAnalysis:
     # schedule interval (default 60s)

@@ -13,3 +13,4 @@ spec:
     crd:
       create: false
     metricsServer: http://appmesh-prometheus:9090
+    meshProvider: appmesh
