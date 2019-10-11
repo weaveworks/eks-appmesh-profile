@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
+  labels:
+    appmesh.k8s.aws/sidecarInjectorWebhook: enabled
+  annotations:
+    fluxcd.io/ignore: "false"
+

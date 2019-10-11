@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress
+  namespace: demo
+spec:
+  selector:
+    app: ingress
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: http
+  type: LoadBalancer
