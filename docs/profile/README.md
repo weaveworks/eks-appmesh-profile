@@ -28,6 +28,24 @@ eksctl create cluster --name=appmesh \
 
 The above command will create a two nodes cluster with App Mesh IAM policy attached to the EKS node instance role.
 
+## Create a GitHub repository
+
+Create a GitHub repository and clone it locally
+(replace the `GHUSER` value with your GitHub username):
+
+```sh
+export GHUSER=username
+git clone https://github.com/${GHUSER}/appmesh-dev
+```
+
+Set your GitHub username and email:
+
+```sh
+cd appmesh-dev
+git config user.name "${GHUSER}"
+git config user.email "your@main.address"
+```
+
 ## Install App Mesh
 
 Run the eksctl profile command (replace `GHUSER` with your GitHub username):
@@ -39,7 +57,8 @@ export EKSCTL_EXPERIMENTAL=true
 eksctl enable profile \
 --cluster appmesh \
 --region=us-west-2 \
---name=https://github.com/weaveworks/eks-appmesh-profile \
+--name=appmesh \
+--revision=demo \
 --git-url=git@github.com:${GHUSER}/appmesh-dev \
 --git-user=fluxcd \
 --git-email=${GHUSER}@users.noreply.github.com
@@ -56,8 +75,6 @@ Go to `Settings > Deploy keys` click on `Add deploy key`, check `Allow write acc
 paste the Flux public key and click `Add key`.
 
 Once that is done, Flux will pick up the changes in the repository and deploy them to the cluster.
-
-## App Mesh components
 
 List the installed components:
 
@@ -88,3 +105,49 @@ Status:
     Type:   MeshActive
 ```
 
+## Kustomize the profile
+
+Create a kustomization for the `base` and `flux` manifests:
+
+```sh
+cd base && kustomize create --autodetect --recursive \ &&
+cd flux && kustomize create --autodetect --recursive
+```
+
+Create a kustomization file in the repo root:
+
+```sh
+cat <<EOF > kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - base
+  - flux
+EOF
+```
+
+Create `.flux.yaml` file in the repo root:
+
+```sh
+cat <<EOF > .flux.yaml
+version: 1
+commandUpdated:
+  generators:
+    - command: kustomize build .
+EOF
+```
+
+Verify the kustomization by running a dry run apply:
+
+```sh
+kubectl apply --dry-run -k .
+```
+
+Apply changes:
+
+```sh
+git add -A && \
+git commit -m "init kustomization" && \
+git push origin master && \
+fluxctl sync --k8s-fwd-ns flux
+```

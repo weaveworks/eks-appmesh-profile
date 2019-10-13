@@ -8,165 +8,106 @@ A canary release is described with a Kubernetes custom resource named **Canary**
 
 ## Application bootstrap
 
-Create a namespace with App Mesh injection enabled:
+Enable the demo by setting `fluxcd.io/ignore` to `false` in `base/demo/namespace.yaml`:
 
 ```yaml{5}
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: demo
+  annotations:
+    fluxcd.io/ignore: "false"
   labels:
     appmesh.k8s.aws/sidecarInjectorWebhook: enabled
-  annotations:
-    fluxcd.io/ignore: "false"
-  name: prod
-```
-
-[Podinfo](http://github.com/stefanprodan/podinfo) is tiny Go web application.
-You'll be installing podinfo using a Helm chart stored in the git repository at `base/charts/podinfo`.
-
-Create a Helm release to install the podinfo chart
-(replace `GHUSER` with your GitHub username):
-
-```yaml{7,11,31}
-apiVersion: helm.fluxcd.io/v1
-kind: HelmRelease
-metadata:
-  name: podinfo
-  namespace: prod
-  annotations:
-    fluxcd.io/ignore: "false"
-spec:
-  releaseName: podinfo
-  chart:
-    git: git@github.com:GHUSER/appmesh-dev
-    ref: master
-    path: base/charts/podinfo
-  values:
-    image:
-      repository: stefanprodan/podinfo
-      tag: 3.1.0
-    service:
-      enabled: false
-      type: ClusterIP
 ```
 
 Apply changes:
 
 ```sh
 git add -A && \
-git commit -m "init app" && \
+git commit -m "init demo" && \
 git push origin master && \
-fluxctl sync
+fluxctl sync --k8s-fwd-ns flux
 ```
 
-Create a canary release for podinfo:
-
-```yaml{7}
-apiVersion: flagger.app/v1alpha3
-kind: Canary
-metadata:
-  name: podinfo
-  namespace: prod
-  annotations:
-    fluxcd.io/ignore: "false"
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: podinfo
-  service:
-    port: 9898
-  canaryAnalysis:
-    interval: 10s
-    stepWeight: 5
-    threshold: 5
-    metrics:
-    - name: request-success-rate
-      threshold: 99
-      interval: 1m
-    - name: request-duration
-      threshold: 500
-      interval: 1m
-    webhooks:
-      - name: load-test
-        url: http://load-tester.prod/
-        metadata:
-          cmd: "hey -z 2m -q 10 -c 2 http://podinfo.test:9898/"
-```
-
-Apply changes:
+Wait for Flagger to initialize the canary:
 
 ```sh
-git add -A && \
-git commit -m "add canary" && \
-git push origin master && \
-fluxctl sync
+kubectl -n demo get canary
 ```
 
-Validate that Flagger has initialized the canary:
+Find the ingress public address with:
 
 ```sh
-kubectl -n prod get canary
+export URL=$(kubectl -n demo get svc/ingress -ojson | jq -r .status.loadBalancer.ingress[].hostname)
 ```
+
+Wait for the ingress DNS to propagate:
+
+```sh
+watch host $URL
+``` 
+
+When the ingres address becomes available, open it in a browser and you'll see the podinfo UI.
 
 ## Automated canary promotion
 
 ![App Mesh Canary Release](/eks-appmesh-flagger-stack.png)
 
-Install the load testing service to generate traffic during the canary analysis:
-
-```yaml{7}
-apiVersion: helm.fluxcd.io/v1
-kind: HelmRelease
-metadata:
-  name: load-tester
-  namespace: prod
-  annotations:
-    fluxcd.io/ignore: "false"
-spec:
-  releaseName: load-tester
-  chart:
-    git: https://github.com/weaveworks/flagger
-    ref: 0.19.0
-    path: charts/loadtester
-  values:
-    fullnameOverride: load-tester
-    meshName: appmesh-dev
-    backends:
-      - podinfo.prod
-      - podinfo-canary.prod
-```
-
 When you deploy a new podinfo version, Flagger gradually shifts traffic to the canary,
 and at the same time, measures the requests success rate as well as the average response duration.
 Based on an analysis of these App Mesh provided metrics, a canary deployment is either promoted or rolled back.
 
-Trigger a canary deployment by updating the container image:
+Create a Kustomize patch for the podinfo deployment in `overlays/podinfo.yaml`:
 
-```yaml{7}
-apiVersion: helm.fluxcd.io/v1
-kind: HelmRelease
+```sh{13}
+mkdir -p overlays && \
+cat <<EOF > overlays/podinfo.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: demo
 spec:
-  releaseName: podinfo
-  values:
-    image:
-      tag: 3.1.1
+  template:
+    spec:
+      containers:
+        - name: podinfod
+          image: stefanprodan/podinfo:3.1.1
+          env:
+            - name: PODINFO_UI_LOGO
+              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+EOF
+```
+
+Add the patch to the kustomization file:
+
+```sh
+cat <<EOF > kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - base
+  - flux
+patchesStrategicMerge:
+  - overlays/podinfo.yaml
+EOF
 ```
 
 Apply changes:
 
 ```sh
 git add -A && \
-git commit -m "update podinfo" && \
+git commit -m "patch podinfo" && \
 git push origin master && \
-fluxctl sync
+fluxctl sync --k8s-fwd-ns flux
 ```
 
 When Flagger detects that the deployment revision changed it will start a new rollout.
 You can monitor the traffic shifting with:
 
 ```sh
-watch kubectl -n prod get canaries
+watch kubectl -n demo get canaries
 ```
 
 ## Automated rollback
@@ -177,13 +118,22 @@ rolls back the faulted version.
 Trigger another canary release:
 
 ```yaml{7}
-apiVersion: helm.fluxcd.io/v1
-kind: HelmRelease
+cat <<EOF > overlays/podinfo.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: demo
 spec:
-  releaseName: podinfo
-  values:
-    image:
-      tag: 3.0.2
+  template:
+    spec:
+      containers:
+        - name: podinfod
+          image: stefanprodan/podinfo:3.1.2
+          env:
+            - name: PODINFO_UI_LOGO
+              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+EOF
 ```
 
 Apply changes:
@@ -192,16 +142,16 @@ Apply changes:
 git add -A && \
 git commit -m "update podinfo" && \
 git push origin master && \
-fluxctl sync
+fluxctl sync --k8s-fwd-ns flux
 ```
 
 Exec into the tester pod and generate HTTP 500 errors:
 
 ```sh
-kubectl -n prod exec -it $(kubectl -n prod get pods -o name | grep -m1 load-tester | cut -d'/' -f 2) bash
+kubectl -n demo exec -it $(kubectl -n demo get pods -o name | grep -m1 flagger-loadtester | cut -d'/' -f 2) bash
 
-$ hey -z 1m -c 5 -q 5 http://podinfo-canary.prod:9898/status/500
-$ hey -z 1m -c 5 -q 5 http://podinfo-canary.prod:9898/delay/1
+$ hey -z 1m -c 5 -q 5 http://podinfo-canary.demo:9898/status/500
+$ hey -z 1m -c 5 -q 5 http://podinfo-canary.demo:9898/delay/1
 ```
 
 When the number of failed checks reaches the canary analysis threshold, the traffic is routed back to the primary and 
@@ -224,6 +174,5 @@ $ kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
  Rolling back podinfo.prod failed checks threshold reached 5
  Canary failed! Scaling down podinfo.test
 ```
-
 
 

@@ -6,26 +6,8 @@ title: Prerequisites
 
 You'll need the following tools installed locally:
 * AWS CLI
-* kubectl
 * git
-
-## git
-
-Create a GitHub repository and clone it locally
-(replace the `GHUSER` value with your GitHub username):
-
-```sh
-export GHUSER=username
-git clone https://github.com/${GHUSER}/appmesh-dev
-```
-
-Set your GitHub username and email:
-
-```sh
-cd appmesh-dev
-git config user.name "${GHUSER}"
-git config user.email "your@main.address"
-```
+* jq
 
 ## eksctl
 
@@ -85,4 +67,30 @@ Verify the install with:
 fluxctl version
 ```
 
+## kustomize
 
+Install kustomize for macOS:
+
+```sh
+brew install kustomize
+```
+
+Install kustomize for Windows:
+
+```sh
+choco install kustomize
+```
+
+Install kustomize for Linux:
+
+```sh
+curl --silent --location \
+"https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.2.3/kustomize_kustomize.v3.2.3_linux_amd64" && \
+sudo mv kustomize_kustomize.v3.2.3_linux_amd64 /usr/local/bin/kustomize
+```
+
+Verify the install with:
+
+```sh
+kustomize version
+```
