@@ -4,7 +4,91 @@ title: Canary Releases
 
 # Canary Releases
 
+To experiment with progressive delivery, you'll be using a small Go application called
+[podinfo](https://github.com/stefanprodan/prodinfo).
+The demo app is exposed outside the cluster with an Envoy proxy (ingress) and an ELB.
+The communication between the ingress and podinfo is managed by Flagger and App Mesh.
+
+```sh
+base/demo/
+├── namespace.yaml
+├── ingress # Envoy proxy
+│   ├── config.yaml
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── virtual-node.yaml
+├── podinfo # Demo app
+│   ├── canary.yaml
+│   ├── deployment.yaml
+│   └── hpa.yaml
+└── tester # Flagger test runner
+    ├── deployment.yaml
+    ├── service.yaml
+    └── virtual-node.yaml
+```
+
+For apps running on App Mesh, you can configure Flagger with a Kubernetes custom resource
+to automate the conformance testing, analysis and promotion of a canary release.
+
+![App Mesh Canary Release](/eks-appmesh-flagger-stack.png)
+
+## Canary custom resource
+
 A canary release is described with a Kubernetes custom resource named **Canary**.
+
+```yaml
+apiVersion: flagger.app/v1alpha3
+kind: Canary
+metadata:
+  name: podinfo
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: podinfo
+  service:
+    port: 9898
+  canaryAnalysis:
+    interval: 10s
+    stepWeight: 5
+    maxWeight: 50
+    threshold: 5
+    metrics:
+    - name: request-success-rate
+      threshold: 99
+      interval: 1m
+    - name: request-duration
+      threshold: 500
+      interval: 1m
+    webhooks:
+      - name: load-test
+        url: http://flagger-loadtester.demo/
+        metadata:
+          cmd: "hey -z 2m -q 10 -c 2 http://podinfo.demo:9898/"
+```
+
+Based on the above definition, Flagger will create the following objects:
+
+```sh
+# applied 
+deployment.apps/podinfo
+horizontalpodautoscaler.autoscaling/podinfo
+canary.flagger.app/podinfo
+
+# generated Kubernetes objects
+deployment.apps/podinfo-primary
+horizontalpodautoscaler.autoscaling/podinfo-primary
+service/podinfo
+service/podinfo-canary
+service/podinfo-primary
+
+# generated App Mesh objects
+virtualnode.appmesh.k8s.aws/podinfo
+virtualnode.appmesh.k8s.aws/podinfo-canary
+virtualnode.appmesh.k8s.aws/podinfo-primary
+virtualservice.appmesh.k8s.aws/podinfo.test
+virtualservice.appmesh.k8s.aws/podinfo-canary.test
+```
 
 ## Application bootstrap
 
@@ -51,8 +135,6 @@ watch host $URL
 When the ingres address becomes available, open it in a browser and you'll see the podinfo UI.
 
 ## Automated canary promotion
-
-![App Mesh Canary Release](/eks-appmesh-flagger-stack.png)
 
 When you deploy a new podinfo version, Flagger gradually shifts traffic to the canary,
 and at the same time, measures the requests success rate as well as the average response duration.
@@ -109,6 +191,8 @@ You can monitor the traffic shifting with:
 ```sh
 watch kubectl -n demo get canaries
 ```
+
+Watch Flagger logs 
 
 ## Automated rollback
 
