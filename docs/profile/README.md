@@ -118,11 +118,11 @@ Status:
 
 ## Kustomize the profile
 
-Create a kustomization for the `base` and `flux` manifests:
+Create kustomization files for `base` and `flux` manifests:
 
 ```sh
-cd base && kustomize create --autodetect --recursive \ &&
-cd flux && kustomize create --autodetect --recursive
+cd base && kustomize create --autodetect --recursive && cd .. \ &&
+cd flux && kustomize create --autodetect --recursive && cd ..
 ```
 
 Create a kustomization file in the repo root:

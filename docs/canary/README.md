@@ -99,7 +99,7 @@ virtualservice.appmesh.k8s.aws/podinfo-canary.test
 
 ## Application bootstrap
 
-Enable the demo by setting `fluxcd.io/ignore` to `false` in `base/demo/namespace.yaml`:
+Install the demo app by setting `fluxcd.io/ignore` to `false` in `base/demo/namespace.yaml`:
 
 ```sh{7}
 cat <<EOF > base/demo/namespace.yaml
@@ -139,6 +139,12 @@ Wait for the ingress DNS to propagate:
 
 ```sh
 watch host $URL
+``` 
+
+Wait for the podinfo to become accessible:
+
+```sh
+watch curl -s $URL
 ``` 
 
 When the ingres address becomes available, open it in a browser and you'll see the podinfo UI.
