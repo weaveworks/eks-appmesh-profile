@@ -8,7 +8,7 @@
     <link rel="icon" href="/favicon.png">
   <link rel="stylesheet" href="/website.css">
     
-    <link rel="preload" href="/assets/css/0.styles.5b15de55.css" as="style"><link rel="preload" href="/assets/js/app.7682425c.js" as="script"><link rel="preload" href="/assets/js/2.b1c512a9.js" as="script"><link rel="preload" href="/assets/js/6.6df98952.js" as="script"><link rel="prefetch" href="/assets/js/10.6c3dc920.js"><link rel="prefetch" href="/assets/js/11.e7d5137e.js"><link rel="prefetch" href="/assets/js/3.e9354191.js"><link rel="prefetch" href="/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/assets/js/7.27d328b7.js"><link rel="prefetch" href="/assets/js/8.12b81b27.js"><link rel="prefetch" href="/assets/js/9.0decfd09.js">
+    <link rel="preload" href="/assets/css/0.styles.5b15de55.css" as="style"><link rel="preload" href="/assets/js/app.6a384050.js" as="script"><link rel="preload" href="/assets/js/2.b1c512a9.js" as="script"><link rel="preload" href="/assets/js/6.f546a058.js" as="script"><link rel="prefetch" href="/assets/js/10.65a42442.js"><link rel="prefetch" href="/assets/js/11.e7d5137e.js"><link rel="prefetch" href="/assets/js/3.e9354191.js"><link rel="prefetch" href="/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/assets/js/7.1c0362e2.js"><link rel="prefetch" href="/assets/js/8.12b81b27.js"><link rel="prefetch" href="/assets/js/9.0decfd09.js">
     <link rel="stylesheet" href="/assets/css/0.styles.5b15de55.css">
   </head>
   <body>
@@ -44,8 +44,13 @@ to automate the conformance testing, analysis and promotion of a canary release.
     <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
     <span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
     <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfo
+  <span class="token key atrule">autoscalerRef</span><span class="token punctuation">:</span>
+    <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> autoscaling/v2beta1
+    <span class="token key atrule">kind</span><span class="token punctuation">:</span> HorizontalPodAutoscaler
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfo
   <span class="token key atrule">service</span><span class="token punctuation">:</span>
     <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">9898</span>
+    <span class="token key atrule">meshName</span><span class="token punctuation">:</span> appmesh
   <span class="token key atrule">canaryAnalysis</span><span class="token punctuation">:</span>
     <span class="token key atrule">interval</span><span class="token punctuation">:</span> 10s
     <span class="token key atrule">stepWeight</span><span class="token punctuation">:</span> <span class="token number">5</span>
@@ -63,7 +68,9 @@ to automate the conformance testing, analysis and promotion of a canary release.
         <span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//flagger<span class="token punctuation">-</span>loadtester.demo/
         <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
           <span class="token key atrule">cmd</span><span class="token punctuation">:</span> <span class="token string">&quot;hey -z 2m -q 10 -c 2 http://podinfo.demo:9898/&quot;</span>
-</code></pre></div><p>Based on the above definition, Flagger will create the following objects:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># applied </span>
+</code></pre></div><p>Flagger takes a Kubernetes deployment and optionally a horizontal pod autoscaler (HPA),
+then creates a series of objects (Kubernetes deployments, ClusterIP services, App Mesh virtual nodes and services).
+These objects expose the application on the mesh and drive the canary analysis and promotion.</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># applied </span>
 deployment.apps/podinfo
 horizontalpodautoscaler.autoscaling/podinfo
 canary.flagger.app/podinfo
@@ -130,8 +137,9 @@ EOF
 fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
 </code></pre></div><p>When Flagger detects that the deployment revision changed it will start a new rollout.
 You can monitor the traffic shifting with:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> kubectl -n demo get canaries
-</code></pre></div><p>Watch Flagger logs</p> <h2 id="automated-rollback"><a href="#automated-rollback" aria-hidden="true" class="header-anchor">#</a> Automated rollback</h2> <p>During the canary analysis you can generate HTTP 500 errors and high latency to test if Flagger pauses and
-rolls back the faulted version.</p> <p>Trigger another canary release:</p> <div class="language-yaml extra-class"><div class="highlight-lines"><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br></div><pre class="language-yaml"><code>cat &lt;&lt;EOF <span class="token punctuation">&gt;</span> overlays/podinfo.yaml
+</code></pre></div><p>Watch Flagger logs:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>kubectl -n appmesh-system logs deployment/flagger -f <span class="token operator">|</span> jq .msg
+</code></pre></div><h2 id="automated-rollback"><a href="#automated-rollback" aria-hidden="true" class="header-anchor">#</a> Automated rollback</h2> <p>During the canary analysis you can generate HTTP 500 errors and high latency to test if Flagger pauses and
+rolls back the faulted version.</p> <p>Trigger another canary release:</p> <div class="language-yaml extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br></div><pre class="language-yaml"><code>cat &lt;&lt;EOF <span class="token punctuation">&gt;</span> overlays/podinfo.yaml
 <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
@@ -173,6 +181,6 @@ the canary is scaled to zero.</p> <p>Watch Flagger logs with:</p> <div class="la
       ←
       <a href="/profile/" class="prev">App Mesh Profile</a></span> <span class="next"><a href="/test/">Canary Tests</a>→
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.7682425c.js" defer></script><script src="/assets/js/2.b1c512a9.js" defer></script><script src="/assets/js/6.6df98952.js" defer></script>
+    <script src="/assets/js/app.6a384050.js" defer></script><script src="/assets/js/2.b1c512a9.js" defer></script><script src="/assets/js/6.f546a058.js" defer></script>
   </body>
 </html>
