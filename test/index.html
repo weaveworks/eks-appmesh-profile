@@ -8,7 +8,7 @@
     <link rel="icon" href="/favicon.png">
   <link rel="stylesheet" href="/website.css">
     
-    <link rel="preload" href="/assets/css/0.styles.5b15de55.css" as="style"><link rel="preload" href="/assets/js/app.4e472b69.js" as="script"><link rel="preload" href="/assets/js/2.b1c512a9.js" as="script"><link rel="preload" href="/assets/js/10.8dd27937.js" as="script"><link rel="prefetch" href="/assets/js/11.e7d5137e.js"><link rel="prefetch" href="/assets/js/3.e9354191.js"><link rel="prefetch" href="/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/assets/js/6.23a8fb1b.js"><link rel="prefetch" href="/assets/js/7.27d328b7.js"><link rel="prefetch" href="/assets/js/8.dd5730d2.js"><link rel="prefetch" href="/assets/js/9.40574128.js">
+    <link rel="preload" href="/assets/css/0.styles.5b15de55.css" as="style"><link rel="preload" href="/assets/js/app.8aa90803.js" as="script"><link rel="preload" href="/assets/js/2.b1c512a9.js" as="script"><link rel="preload" href="/assets/js/10.f3c457c2.js" as="script"><link rel="prefetch" href="/assets/js/11.e7d5137e.js"><link rel="prefetch" href="/assets/js/3.e9354191.js"><link rel="prefetch" href="/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/assets/js/6.30e55284.js"><link rel="prefetch" href="/assets/js/7.1c0362e2.js"><link rel="prefetch" href="/assets/js/8.4e550476.js"><link rel="prefetch" href="/assets/js/9.391b4868.js">
     <link rel="stylesheet" href="/assets/css/0.styles.5b15de55.css">
   </head>
   <body>
@@ -38,7 +38,8 @@ spec:
         metadata:
           cmd: <span class="token string">&quot;hey -z 1m -q 10 -c 2 http://podinfo-canary.demo:9898/&quot;</span>
 EOF
-</code></pre></div><p>Add the canary patch to kustomization:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>apiVersion: kustomize.config.k8s.io/v1beta1
+</code></pre></div><p>Add the canary patch to kustomization:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span>EOF <span class="token operator">&gt;</span> kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
   - base
@@ -75,6 +76,6 @@ fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
 If the acceptance test fails, Flagger will retry until the analysis threshold is reached and the canary is rolled back.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/canary/" class="prev">Canary Releases</a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.4e472b69.js" defer></script><script src="/assets/js/2.b1c512a9.js" defer></script><script src="/assets/js/10.8dd27937.js" defer></script>
+    <script src="/assets/js/app.8aa90803.js" defer></script><script src="/assets/js/2.b1c512a9.js" defer></script><script src="/assets/js/10.f3c457c2.js" defer></script>
   </body>
 </html>
