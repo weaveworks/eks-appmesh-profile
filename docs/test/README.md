@@ -4,97 +4,67 @@ title: Canary Tests
 
 # Helm Tests
 
-Flagger comes with a testing service that can run Helm tests when configured as a webhook.
+Flagger comes with a testing service that can run acceptance and load tests when configured as a webhook.
 
 ## Create tests
 
-Create a test for the podinfo token API:
+Create a Kustomize patch for the podinfo canary in `overlays/canary.yaml`:
 
-```yaml{11}
-apiVersion: v1
-kind: Pod
+```sh{10,17}
+cat <<EOF > overlays/canary.yaml
+apiVersion: flagger.app/v1alpha3
+kind: Canary
 metadata:
-  name: {{ template "podinfo.fullname" . }}-jwt-test-{{ randAlphaNum 5 | lower }}
-  labels:
-    heritage: {{ .Release.Service }}
-    release: {{ .Release.Name }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
-    app: {{ template "podinfo.name" . }}
-  annotations:
-    appmesh.k8s.aws/sidecarInjectorWebhook: disabled
-    "helm.sh/hook": test-success
+  name: podinfo
+  namespace: demo
 spec:
-  containers:
-    - name: tools
-      image: giantswarm/tiny-tools
-      command:
-        - sh
-        - -c
-        - |
-          TOKEN=$(curl -sd 'test' ${PODINFO_SVC}/token | jq -r .token) &&
-          curl -H "Authorization: Bearer ${TOKEN}" ${PODINFO_SVC}/token/validate | grep test
-      env:
-      - name: PODINFO_SVC
-        value: {{ template "podinfo.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.externalPort }}
-  restartPolicy: Never
-```
-
-Save the above file in `base/charts/podinfo/tests`.
-
-Deploy the Helm test runner in the `prod` namespace:
-
-```yaml{7}
-apiVersion: helm.fluxcd.io/v1
-kind: HelmRelease
-metadata:
-  name: helm-tester
-  namespace: prod
-  annotations:
-    fluxcd.io/ignore: "false"
-spec:
-  releaseName: helm-tester
-  chart:
-    git: https://github.com/weaveworks/flagger
-    ref: 0.18.4
-    path: charts/loadtester
-  values:
-    fullnameOverride: helm-tester
-    serviceAccountName: helm-tester
+  canaryAnalysis:
+    webhooks:
+      - name: acceptance-test
+        type: pre-rollout
+        url: http://flagger-loadtester.demo/
+        timeout: 30s
+        metadata:
+          type: bash
+          cmd: "curl -sd 'test' http://podinfo-canary.demo:9898/token | grep token"
+      - name: load-test
+        url: http://flagger-loadtester.demo/
+        timeout: 5s
+        metadata:
+          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.demo:9898/"
+EOF
 ```
 
 Apply changes:
 
 ```sh
 git add -A && \
-git commit -m "install helm-tester" && \
+git commit -m "patch canary tests" && \
 git push origin master && \
-fluxctl sync
+fluxctl sync --k8s-fwd-ns flux
 ```
 
 ## Run tests
 
-Add the helm test as a pre-rollout webhook:
+Trigger a canary release:
 
-```yaml{9,10,11,12,13,14,15}
-apiVersion: flagger.app/v1alpha3
-kind: Canary
+```yaml{12}
+cat <<EOF > overlays/podinfo.yaml
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: podinfo
-  namespace: prod
+  namespace: demo
 spec:
-  canaryAnalysis:
-    webhooks:
-      - name: "helm test"
-        type: pre-rollout
-        url: http://helm-tester.prod/
-        timeout: 2m
-        metadata:
-          type: "helmv3"
-          cmd: "test run podinfo --cleanup"
-      - name: load-test
-        url: http://load-tester.prod/
-        metadata:
-          cmd: "hey -z 2m -q 10 -c 2 http://podinfo.prod:9898/"
+  template:
+    spec:
+      containers:
+        - name: podinfod
+          image: stefanprodan/podinfo:3.1.3
+          env:
+            - name: PODINFO_UI_LOGO
+              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+EOF
 ```
 
 Apply changes:
@@ -103,9 +73,9 @@ Apply changes:
 git add -A && \
 git commit -m "update podinfo" && \
 git push origin master && \
-fluxctl sync
+fluxctl sync --k8s-fwd-ns flux
 ```
 
 When the canary analysis starts, Flagger will call the pre-rollout webhooks before routing traffic to the canary.
-If the helm test fails, Flagger will retry until the analysis threshold is reached and the canary is rolled back.
+If the acceptance test fails, Flagger will retry until the analysis threshold is reached and the canary is rolled back.
 

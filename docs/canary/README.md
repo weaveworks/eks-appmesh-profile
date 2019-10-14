@@ -46,8 +46,13 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: podinfo
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta1
+    kind: HorizontalPodAutoscaler
+    name: podinfo
   service:
     port: 9898
+    meshName: appmesh
   canaryAnalysis:
     interval: 10s
     stepWeight: 5
@@ -67,7 +72,9 @@ spec:
           cmd: "hey -z 2m -q 10 -c 2 http://podinfo.demo:9898/"
 ```
 
-Based on the above definition, Flagger will create the following objects:
+Flagger takes a Kubernetes deployment and optionally a horizontal pod autoscaler (HPA),
+then creates a series of objects (Kubernetes deployments, ClusterIP services, App Mesh virtual nodes and services).
+These objects expose the application on the mesh and drive the canary analysis and promotion.
 
 ```sh
 # applied 
@@ -192,7 +199,11 @@ You can monitor the traffic shifting with:
 watch kubectl -n demo get canaries
 ```
 
-Watch Flagger logs 
+Watch Flagger logs:
+
+```sh
+kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
+```
 
 ## Automated rollback
 
@@ -201,7 +212,7 @@ rolls back the faulted version.
 
 Trigger another canary release:
 
-```yaml{7}
+```yaml{12}
 cat <<EOF > overlays/podinfo.yaml
 apiVersion: apps/v1
 kind: Deployment
