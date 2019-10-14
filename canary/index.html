@@ -8,7 +8,7 @@
     <link rel="icon" href="/favicon.png">
   <link rel="stylesheet" href="/website.css">
     
-    <link rel="preload" href="/assets/css/0.styles.5b15de55.css" as="style"><link rel="preload" href="/assets/js/app.8aa90803.js" as="script"><link rel="preload" href="/assets/js/2.b1c512a9.js" as="script"><link rel="preload" href="/assets/js/6.30e55284.js" as="script"><link rel="prefetch" href="/assets/js/10.f3c457c2.js"><link rel="prefetch" href="/assets/js/11.e7d5137e.js"><link rel="prefetch" href="/assets/js/3.e9354191.js"><link rel="prefetch" href="/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/assets/js/7.1c0362e2.js"><link rel="prefetch" href="/assets/js/8.4e550476.js"><link rel="prefetch" href="/assets/js/9.391b4868.js">
+    <link rel="preload" href="/assets/css/0.styles.5b15de55.css" as="style"><link rel="preload" href="/assets/js/app.3a8a578a.js" as="script"><link rel="preload" href="/assets/js/2.b1c512a9.js" as="script"><link rel="preload" href="/assets/js/6.a527627e.js" as="script"><link rel="prefetch" href="/assets/js/10.f3c457c2.js"><link rel="prefetch" href="/assets/js/11.e7d5137e.js"><link rel="prefetch" href="/assets/js/3.e9354191.js"><link rel="prefetch" href="/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/assets/js/7.27d328b7.js"><link rel="prefetch" href="/assets/js/8.12b81b27.js"><link rel="prefetch" href="/assets/js/9.10abd1f6.js">
     <link rel="stylesheet" href="/assets/css/0.styles.5b15de55.css">
   </head>
   <body>
@@ -88,7 +88,7 @@ virtualnode.appmesh.k8s.aws/podinfo-canary
 virtualnode.appmesh.k8s.aws/podinfo-primary
 virtualservice.appmesh.k8s.aws/podinfo.test
 virtualservice.appmesh.k8s.aws/podinfo-canary.test
-</code></pre></div><h2 id="application-bootstrap"><a href="#application-bootstrap" aria-hidden="true" class="header-anchor">#</a> Application bootstrap</h2> <p>Enable the demo by setting <code>fluxcd.io/ignore</code> to <code>false</code> in <code>base/demo/namespace.yaml</code>:</p> <div class="language-sh extra-class"><div class="highlight-lines"><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br></div><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span>EOF <span class="token operator">&gt;</span> base/demo/namespace.yaml
+</code></pre></div><h2 id="application-bootstrap"><a href="#application-bootstrap" aria-hidden="true" class="header-anchor">#</a> Application bootstrap</h2> <p>Install the demo app by setting <code>fluxcd.io/ignore</code> to <code>false</code> in <code>base/demo/namespace.yaml</code>:</p> <div class="language-sh extra-class"><div class="highlight-lines"><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br></div><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span>EOF <span class="token operator">&gt;</span> base/demo/namespace.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -105,6 +105,7 @@ fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
 </code></pre></div><p>Wait for Flagger to initialize the canary:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> kubectl -n demo get canary
 </code></pre></div><p>Find the ingress public address with:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">URL</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>kubectl -n demo get svc/ingress -ojson <span class="token operator">|</span> jq -r .status.loadBalancer.ingress<span class="token punctuation">[</span><span class="token punctuation">]</span>.hostname<span class="token variable">)</span></span>
 </code></pre></div><p>Wait for the ingress DNS to propagate:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> <span class="token function">host</span> <span class="token variable">$URL</span>
+</code></pre></div><p>Wait for the podinfo to become accessible:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> <span class="token function">curl</span> -s <span class="token variable">$URL</span>
 </code></pre></div><p>When the ingres address becomes available, open it in a browser and you'll see the podinfo UI.</p> <p><img src="/podinfo.png" alt="podinfo"></p> <h2 id="automated-canary-promotion"><a href="#automated-canary-promotion" aria-hidden="true" class="header-anchor">#</a> Automated canary promotion</h2> <p>When you deploy a new podinfo version, Flagger gradually shifts traffic to the canary,
 and at the same time, measures the requests success rate as well as the average response duration.
 Based on an analysis of these App Mesh provided metrics, a canary deployment is either promoted or rolled back.</p> <p>Create a Kustomize patch for the podinfo deployment in <code>overlays/podinfo.yaml</code>:</p> <div class="language-sh extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br></div><pre class="language-sh"><code><span class="token function">mkdir</span> -p overlays <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
@@ -183,6 +184,6 @@ the canary is scaled to zero.</p> <p>Watch Flagger logs with:</p> <div class="la
       ←
       <a href="/profile/" class="prev">App Mesh Profile</a></span> <span class="next"><a href="/test/">Canary Tests</a>→
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.8aa90803.js" defer></script><script src="/assets/js/2.b1c512a9.js" defer></script><script src="/assets/js/6.30e55284.js" defer></script>
+    <script src="/assets/js/app.3a8a578a.js" defer></script><script src="/assets/js/2.b1c512a9.js" defer></script><script src="/assets/js/6.a527627e.js" defer></script>
   </body>
 </html>
