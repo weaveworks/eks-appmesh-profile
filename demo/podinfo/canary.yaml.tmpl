@@ -5,14 +5,14 @@ metadata:
   namespace: demo
 spec:
   provider: appmesh
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 60
   # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: podinfo
-  # the maximum time in seconds for the canary deployment
-  # to make progress before it is rollback (default 600s)
-  progressDeadlineSeconds: 60
   # HPA reference (optional)
   autoscalerRef:
     apiVersion: autoscaling/v2beta1
@@ -63,4 +63,4 @@ spec:
         url: http://flagger-loadtester.demo/
         timeout: 5s
         metadata:
-          cmd: "hey -z 1m -q 10 -c 2 http://podinfo.demo:9898/"
+          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.demo:9898/"

@@ -35,10 +35,10 @@ data:
                               route:
                                 cluster: podinfo
                                 host_rewrite: podinfo.demo
-                                timeout: 15s
+                                timeout: 5s
                                 retry_policy:
                                   retry_on: "gateway-error,connect-failure,refused-stream"
-                                  num_retries: 10
+                                  num_retries: 5
                                   per_try_timeout: 5s
       clusters:
         - name: podinfo
