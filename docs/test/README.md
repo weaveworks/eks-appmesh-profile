@@ -35,6 +35,20 @@ spec:
 EOF
 ```
 
+Add the canary patch to kustomization:
+
+```sh
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - base
+  - flux
+patchesStrategicMerge:
+  - overlays/podinfo.yaml
+  - overlays/canary.yaml
+EOF
+```
+
 Apply changes:
 
 ```sh
