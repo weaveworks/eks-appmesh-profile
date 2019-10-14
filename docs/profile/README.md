@@ -19,11 +19,22 @@ The App Mesh integration with EKS is made out of the following components:
 Create an EKS cluster named `appmesh`:
 
 ```sh
-eksctl create cluster --name=appmesh \
---region=us-west-2 \
---nodes 2 \
---node-volume-size=120 \
---appmesh-access
+cat << EOF | eksctl create cluster -f -
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: appmesh
+  region: eu-west-2
+nodeGroups:
+  - name: default
+    instanceType: m5.large
+    desiredCapacity: 2
+    volumeSize: 120
+    iam:
+      withAddonPolicies:
+        appMesh: true
+        xRay: true
+EOF
 ```
 
 The above command will create a two nodes cluster with App Mesh IAM policy attached to the EKS node instance role.
@@ -79,7 +90,7 @@ Once that is done, Flux will pick up the changes in the repository and deploy th
 List the installed components:
 
 ```
-$ kubectl get helmreleases --all-namespaces
+$ watch kubectl get helmreleases --all-namespaces
 
 NAMESPACE        NAME                 RELEASE              STATUS     MESSAGE                  AGE
 appmesh-system   appmesh-controller   appmesh-controller   DEPLOYED   helm install succeeded   1m
