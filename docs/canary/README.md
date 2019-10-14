@@ -101,7 +101,8 @@ virtualservice.appmesh.k8s.aws/podinfo-canary.test
 
 Enable the demo by setting `fluxcd.io/ignore` to `false` in `base/demo/namespace.yaml`:
 
-```yaml{5}
+```sh{7}
+cat <<EOF > base/demo/namespace.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -110,6 +111,7 @@ metadata:
     fluxcd.io/ignore: "false"
   labels:
     appmesh.k8s.aws/sidecarInjectorWebhook: enabled
+EOF
 ```
 
 Apply changes:
@@ -124,7 +126,7 @@ fluxctl sync --k8s-fwd-ns flux
 Wait for Flagger to initialize the canary:
 
 ```sh
-kubectl -n demo get canary
+watch kubectl -n demo get canary
 ```
 
 Find the ingress public address with:
@@ -140,6 +142,8 @@ watch host $URL
 ``` 
 
 When the ingres address becomes available, open it in a browser and you'll see the podinfo UI.
+
+![podinfo](/podinfo.png)
 
 ## Automated canary promotion
 
