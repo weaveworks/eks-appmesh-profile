@@ -6,10 +6,16 @@ title: App Mesh Profile
 
 The App Mesh integration with EKS is made out of the following components:
 
-* CRD controller - keeps the custom resources in sync with the App Mesh control plane
-* Admission controller - injects the Envoy sidecar and assigns Kubernetes pods to App Mesh virtual nodes
-* Metrics server - Prometheus instance that collects and stores Envoy's metrics
-* Progressive delivery operator - Flagger instance configured to drive canary releases using App Mesh routing 
+* **Kubernetes custom resources** -
+    mesh, virtual nodes and virtual services
+* **CRD controller** - 
+    keeps the custom resources in sync with the App Mesh control plane
+* **Admission controller** - 
+    injects the Envoy sidecar and assigns pods to App Mesh virtual nodes
+* **Metrics server** - 
+    Prometheus instance that collects and stores Envoy's metrics
+* **Progressive delivery operator** - 
+    Flagger instance that automates canary releases on top of App Mesh 
 
 To install these components you'll be using the eksctl [App Mesh profile](https://github.com/weaveworks/eks-appmesh-profile).
 With eksctl profiles you can launch a fully-configured managed Kubernetes cluster with EKS and
