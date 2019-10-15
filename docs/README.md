@@ -1,5 +1,5 @@
 ---
-title: EKS GitOps Workshop
+title: EKS GitOps hands-on
 meta:
   - name: keywords
     content: gitops kubernetes aws eks eksctl appmesh fluxcd flagger
@@ -7,7 +7,7 @@ home: true
 sidebar: auto
 heroImage: /eks-appmesh-gitops.png
 heroText: Progressive Delivery for Amazon EKS
-tagline: Welcome to the EKS GitOps Workshop
+tagline: Welcome to the EKS GitOps hands-on workshop
 actionText: Get Started →
 actionLink: /intro/
 features:

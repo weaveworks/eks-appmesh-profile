@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'EKS GitOps Workshop',
+    title: 'EKS GitOps hands-on',
     description: 'Progressive Delivery for Amazon EKS with App Mesh, FluxCD and Flagger',
     themeConfig: {
         displayAllHeaders: true,
