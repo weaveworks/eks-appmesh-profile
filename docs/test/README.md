@@ -20,13 +20,20 @@ metadata:
 spec:
   canaryAnalysis:
     webhooks:
-      - name: acceptance-test
+      - name: acceptance-test-token
         type: pre-rollout
         url: http://flagger-loadtester.demo/
         timeout: 30s
         metadata:
           type: bash
           cmd: "curl -sd 'test' http://podinfo-canary.demo:9898/token | grep token"
+      - name: acceptance-test-tracing
+        type: pre-rollout
+        url: http://flagger-loadtester.demo/
+        timeout: 30s
+        metadata:
+          type: bash
+          cmd: "curl -s http://podinfo-canary.demo:9898/headers | grep X-Request-Id"
       - name: load-test
         url: http://flagger-loadtester.demo/
         timeout: 5s
@@ -94,3 +101,25 @@ fluxctl sync --k8s-fwd-ns flux
 When the canary analysis starts, Flagger will call the pre-rollout webhooks before routing traffic to the canary.
 If the acceptance test fails, Flagger will retry until the analysis threshold is reached and the canary is rolled back.
 
+Watch Flagger logs:
+
+```{4,5}
+$ kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
+
+New revision detected! Scaling up podinfo.test
+Pre-rollout check acceptance-test-token passed
+Pre-rollout check acceptance-test-tracing passed
+Advance podinfo.test canary weight 5
+Advance podinfo.test canary weight 10
+Advance podinfo.test canary weight 15
+Advance podinfo.test canary weight 20
+Advance podinfo.test canary weight 25
+Advance podinfo.test canary weight 30
+Advance podinfo.test canary weight 35
+Advance podinfo.test canary weight 40
+Advance podinfo.test canary weight 45
+Advance podinfo.test canary weight 50
+Copying podinfo.test template spec to podinfo-primary.test
+Routing all traffic to primary
+Promotion completed! Scaling down podinfo.test
+```
