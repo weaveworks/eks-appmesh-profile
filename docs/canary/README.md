@@ -132,7 +132,8 @@ watch kubectl -n demo get canary
 Find the ingress public address with:
 
 ```sh
-export URL=$(kubectl -n demo get svc/ingress -ojson | jq -r .status.loadBalancer.ingress[].hostname)
+export URL="http://$(kubectl -n demo get svc/ingress -ojson | jq -r .status.loadBalancer.ingress[].hostname)"
+echo $URL
 ```
 
 Wait for the ingress DNS to propagate:

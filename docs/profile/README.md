@@ -75,7 +75,7 @@ export EKSCTL_EXPERIMENTAL=true
 
 eksctl enable profile \
 --cluster appmesh \
---region=us-west-2 \
+--region=eu-west-2 \
 --name=appmesh \
 --revision=demo \
 --git-url=git@github.com:${GHUSER}/appmesh-dev \

@@ -58,7 +58,7 @@ Install fluxctl for Linux:
 
 ```sh
 curl -sL https://fluxcd.io/install | sh
-export PATH=$PATH:$HOME/.fluxcd/bin
+export PATH="$PATH:$HOME/.fluxcd/bin"
 ```
 
 Verify the install with:
@@ -85,7 +85,7 @@ Install kustomize for Linux:
 
 ```sh
 curl --silent --location --remote-name \
-"https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.2.3/kustomize_kustomize.v3.2.3_linux_amd64" && \
+"https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v3.2.3/kustomize_kustomize.v3.2.3_linux_amd64" && \
 chmod a+x kustomize_kustomize.v3.2.3_linux_amd64 && \
 sudo mv kustomize_kustomize.v3.2.3_linux_amd64 /usr/local/bin/kustomize
 ```
