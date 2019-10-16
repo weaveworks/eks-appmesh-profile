@@ -126,6 +126,12 @@ Status:
 
 ## Kustomize the profile
 
+Sync your local repository:
+
+```sh
+git pull origin master
+```
+
 Create kustomization files for `base` and `flux` manifests:
 
 ```sh
