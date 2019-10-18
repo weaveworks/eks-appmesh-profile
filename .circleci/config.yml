@@ -12,6 +12,9 @@ jobs:
           name: Install kubeval
           command: curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz && sudo mv kubeval /bin/kubeval
       - run:
+          name: Install yq
+          command: sudo curl -L https://github.com/mikefarah/yq/releases/download/2.4.0/yq_linux_amd64 -o /usr/local/bin/yq && sudo chmod +x /usr/local/bin/yq
+      - run:
           name: Install helm
           command: curl -L https://storage.googleapis.com/kubernetes-helm/helm-v2.14.3-linux-amd64.tar.gz | tar xz && sudo mv linux-amd64/helm /bin/helm && sudo rm -rf linux-amd64
       - run:
@@ -21,6 +24,14 @@ jobs:
           name: Validate manifests
           command: |
             kubeval --strict --ignore-missing-schemas -d appmesh-system,kube-system
+      - run:
+          name: Validate helm releases
+          command: |
+            ./.circleci/hrval.sh appmesh-system/flagger.yaml
+            ./.circleci/hrval.sh appmesh-system/appmesh-prometheus.yaml
+            ./.circleci/hrval.sh appmesh-system/appmesh-controller.yaml
+            ./.circleci/hrval.sh  kube-system/metrics-server.yaml
+
 workflows:
   version: 2
   validate:
