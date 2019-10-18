@@ -30,7 +30,8 @@ jobs:
             ./.circleci/hrval.sh appmesh-system/flagger.yaml
             ./.circleci/hrval.sh appmesh-system/appmesh-prometheus.yaml
             ./.circleci/hrval.sh appmesh-system/appmesh-controller.yaml
-            ./.circleci/hrval.sh  kube-system/metrics-server.yaml
+            ./.circleci/hrval.sh appmesh-system/appmesh-inject.yaml.tmpl ignore-values
+            ./.circleci/hrval.sh kube-system/metrics-server.yaml
 
 workflows:
   version: 2

@@ -3,7 +3,7 @@
 set -o errexit
 
 HR=$1
-
+IGNORE_VALUES=$2
 usage() {
   echo "$(basename $0) </path/to/helmrelease>"
 }
@@ -56,7 +56,11 @@ HR_NAME=$(yq r ${HR} metadata.name)
 HR_NAMESPACE=$(yq r ${HR} metadata.namespace)
 
 echo "Extracting values to ${TMPDIR}/${HR_NAME}.values.yaml"
-yq r ${HR} spec.values > ${TMPDIR}/${HR_NAME}.values.yaml
+if [ ${IGNORE_VALUES} ]; then
+  echo "" > ${TMPDIR}/${HR_NAME}.values.yaml
+else
+  yq r ${HR} spec.values > ${TMPDIR}/${HR_NAME}.values.yaml
+fi
 
 echo "Writing Helm release to ${TMPDIR}/${HR_NAME}.release.yaml"
 helm template ${CHART_TAR} \
