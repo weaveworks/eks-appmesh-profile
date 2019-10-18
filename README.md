@@ -26,10 +26,9 @@ export GHUSER=username
 export GHREPO=repo
 export EKSCTL_EXPERIMENTAL=true
 
-eksctl enable profile \
---cluster appmesh \
+eksctl enable profile appmesh \
+--cluster=appmesh \
 --region=us-west-2 \
---name=https://github.com/weaveworks/eks-appmesh-profile \
 --git-url=git@github.com:${GHUSER}/${GHREPO} \
 --git-user=fluxcd \
 --git-email=${GHUSER}@users.noreply.github.com
