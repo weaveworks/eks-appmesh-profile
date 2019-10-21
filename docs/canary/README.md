@@ -281,4 +281,105 @@ $ kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
  Canary failed! Scaling down podinfo.test
 ```
 
+## A/B Testing
+
+Besides weighted routing, Flagger can be configured to route traffic to the canary based on HTTP match conditions.
+In an A/B testing scenario, you'll be using HTTP headers or cookies to target a certain segment of your users.
+This is particularly useful for frontend applications that require session affinity.
+
+![Flagger A/B Testing Stages](https://raw.githubusercontent.com/weaveworks/flagger/master/docs/diagrams/flagger-abtest-steps.png)
+
+Create a Kustomize patch for the canary configuration by removing the max/step weight and adding a HTTP header match condition and iterations:
+
+```sh{10,17}
+cat <<EOF > overlays/canary.yaml
+apiVersion: flagger.app/v1alpha3
+kind: Canary
+metadata:
+  name: podinfo
+  namespace: demo
+spec:
+  canaryAnalysis:
+    interval: 30s
+    threshold: 10
+    iterations: 10
+    match:
+      - headers:
+          user-agent:
+            regex: ".*Chrome.*"
+EOF
+```
+
+The above configuration will run a canary analysis for five minutes (`interval * iterations`)
+targeting users with Chromium-based browsers.
+
+Add the canary patch to the kustomization:
+
+```sh
+cat <<EOF > kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - base
+  - flux
+patchesStrategicMerge:
+  - overlays/podinfo.yaml
+  - overlays/canary.yaml
+EOF
+```
+
+Trigger another canary release:
+
+```yaml{12}
+cat <<EOF > overlays/podinfo.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: demo
+spec:
+  template:
+    spec:
+      containers:
+        - name: podinfod
+          image: stefanprodan/podinfo:3.1.3
+          env:
+            - name: PODINFO_UI_LOGO
+              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+EOF
+```
+
+Apply changes:
+
+```sh
+git add -A && \
+git commit -m "update podinfo" && \
+git push origin master && \
+fluxctl sync --k8s-fwd-ns flux
+```
+
+Flagger detects that the deployment revision changed and starts the A/B test:
+
+```text
+kubectl -n appmesh-system logs deploy/flagger -f | jq .msg
+
+New revision detected! Starting canary analysis for podinfo.test
+Advance podinfo.test canary iteration 1/10
+Advance podinfo.test canary iteration 2/10
+Advance podinfo.test canary iteration 3/10
+Advance podinfo.test canary iteration 4/10
+Advance podinfo.test canary iteration 5/10
+Advance podinfo.test canary iteration 6/10
+Advance podinfo.test canary iteration 7/10
+Advance podinfo.test canary iteration 8/10
+Advance podinfo.test canary iteration 9/10
+Advance podinfo.test canary iteration 10/10
+Copying podinfo.test template spec to podinfo-primary.test
+Waiting for podinfo-primary.test rollout to finish: 1 of 2 updated replicas are available
+Routing all traffic to primary
+Promotion completed! Scaling down podinfo.test
+```
+
+While the analysis is running, if you use a Chromium-based browser to access podinfo UI, you'll be redirected 
+to v3.1.3 wile using Firefox or Safari you'll get v3.1.2.
 

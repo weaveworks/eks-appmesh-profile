@@ -12,7 +12,7 @@ The App Mesh integration with EKS is made out of the following components:
     keeps the custom resources in sync with the App Mesh control plane
 * **Admission controller** - 
     injects the Envoy sidecar and assigns pods to App Mesh virtual nodes
-* **Metrics server** - 
+* **Telemetry service** - 
     Prometheus instance that collects and stores Envoy's metrics
 * **Progressive delivery operator** - 
     Flagger instance that automates canary releases on top of App Mesh 
@@ -73,11 +73,10 @@ Run the eksctl profile command (replace `GHUSER` with your GitHub username):
 export GHUSER=username
 export EKSCTL_EXPERIMENTAL=true
 
-eksctl enable profile \
---cluster appmesh \
---region=eu-west-2 \
---name=appmesh \
+eksctl enable profile appmesh \
 --revision=demo \
+--cluster=appmesh \
+--region=eu-west-2 \
 --git-url=git@github.com:${GHUSER}/appmesh-dev \
 --git-user=fluxcd \
 --git-email=${GHUSER}@users.noreply.github.com
