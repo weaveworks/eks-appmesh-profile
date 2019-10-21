@@ -42,7 +42,7 @@ spec:
 EOF
 ```
 
-Add the canary patch to kustomization:
+Add the canary patch to the kustomization:
 
 ```sh
 cat <<EOF > kustomization.yaml
@@ -82,7 +82,7 @@ spec:
     spec:
       containers:
         - name: podinfod
-          image: stefanprodan/podinfo:3.1.3
+          image: stefanprodan/podinfo:3.1.4
           env:
             - name: PODINFO_UI_LOGO
               value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
