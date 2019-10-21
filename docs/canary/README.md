@@ -287,11 +287,9 @@ Besides weighted routing, Flagger can be configured to route traffic to the cana
 In an A/B testing scenario, you'll be using HTTP headers or cookies to target a certain segment of your users.
 This is particularly useful for frontend applications that require session affinity.
 
-![Flagger A/B Testing Stages](https://raw.githubusercontent.com/weaveworks/flagger/master/docs/diagrams/flagger-abtest-steps.png)
-
 Create a Kustomize patch for the canary configuration by removing the max/step weight and adding a HTTP header match condition and iterations:
 
-```sh{10,17}
+```sh{11,12}
 cat <<EOF > overlays/canary.yaml
 apiVersion: flagger.app/v1alpha3
 kind: Canary
@@ -315,7 +313,7 @@ targeting users with Chromium-based browsers.
 
 Add the canary patch to the kustomization:
 
-```sh
+```sh{9}
 cat <<EOF > kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
