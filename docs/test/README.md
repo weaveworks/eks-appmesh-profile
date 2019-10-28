@@ -2,7 +2,7 @@
 title: Canary Tests
 ---
 
-# Helm Tests
+# Canary Tests
 
 Flagger comes with a testing service that can run acceptance and load tests when configured as a webhook.
 

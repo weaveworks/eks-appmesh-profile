@@ -1,3 +1,3 @@
 # eks-appmesh-profile
 
-Workshop website [eks.workshop.flagger.dev](https://eks.workshop.flagger.dev)
+Hands-on workshop website [eks.handson.flagger.dev](https://eks.handson.flagger.dev)
