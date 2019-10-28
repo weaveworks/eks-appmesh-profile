@@ -32,7 +32,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
   name: appmesh
-  region: eu-west-2
+  region: us-west-2
 nodeGroups:
   - name: default
     instanceType: m5.large
@@ -76,7 +76,7 @@ export EKSCTL_EXPERIMENTAL=true
 eksctl enable profile appmesh \
 --revision=demo \
 --cluster=appmesh \
---region=eu-west-2 \
+--region=us-west-2 \
 --git-url=git@github.com:${GHUSER}/appmesh-dev \
 --git-user=fluxcd \
 --git-email=${GHUSER}@users.noreply.github.com
