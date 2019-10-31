@@ -141,7 +141,7 @@ cd flux && kustomize create --autodetect --recursive && cd ..
 Create a kustomization file in the repo root:
 
 ```sh
-cat <<EOF > kustomization.yaml
+cat << EOF | tee kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
@@ -153,7 +153,7 @@ EOF
 Create `.flux.yaml` file in the repo root:
 
 ```sh
-cat <<EOF > .flux.yaml
+cat << EOF | tee .flux.yaml
 version: 1
 commandUpdated:
   generators:
