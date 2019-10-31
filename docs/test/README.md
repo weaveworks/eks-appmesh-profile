@@ -11,7 +11,7 @@ Flagger comes with a testing service that can run acceptance and load tests when
 Create a Kustomize patch for the podinfo canary in `overlays/canary.yaml`:
 
 ```sh{10,17}
-cat <<EOF > overlays/canary.yaml
+cat << EOF | tee overlays/canary.yaml
 apiVersion: flagger.app/v1alpha3
 kind: Canary
 metadata:
@@ -45,7 +45,7 @@ EOF
 Add the canary patch to the kustomization:
 
 ```sh
-cat <<EOF > kustomization.yaml
+cat << EOF | tee kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
@@ -71,7 +71,7 @@ fluxctl sync --k8s-fwd-ns flux
 Trigger a canary release:
 
 ```yaml{12}
-cat <<EOF > overlays/podinfo.yaml
+cat << EOF | tee overlays/podinfo.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:

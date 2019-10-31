@@ -102,7 +102,7 @@ virtualservice.appmesh.k8s.aws/podinfo-canary.test
 Install the demo app by setting `fluxcd.io/ignore` to `false` in `base/demo/namespace.yaml`:
 
 ```sh{7}
-cat <<EOF > base/demo/namespace.yaml
+cat << EOF | tee base/demo/namespace.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -132,7 +132,7 @@ watch kubectl -n demo get canary
 Find the ingress public address with:
 
 ```sh
-export URL="http://$(kubectl -n demo get svc/ingress -ojson | jq -r .status.loadBalancer.ingress[].hostname)"
+export URL="http://$(kubectl -n demo get svc/ingress -ojson | jq -r ".status.loadBalancer.ingress[].hostname")"
 echo $URL
 ```
 
@@ -162,7 +162,7 @@ Create a Kustomize patch for the podinfo deployment in `overlays/podinfo.yaml`:
 
 ```sh{13}
 mkdir -p overlays && \
-cat <<EOF > overlays/podinfo.yaml
+cat << EOF | tee overlays/podinfo.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -183,7 +183,7 @@ EOF
 Add the patch to the kustomization file:
 
 ```sh
-cat <<EOF > kustomization.yaml
+cat << EOF | tee kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
@@ -216,6 +216,13 @@ Watch Flagger logs:
 kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
 ```
 
+Lastly, open up podinfo in the browser.
+You'll see that as Flagger shifts more traffic to the canary according to the policy in the Canary object,
+we see requests going to our new version of the app.
+```sh
+echo $URL
+```
+
 ## Automated rollback
 
 During the canary analysis you can generate HTTP 500 errors and high latency to test if Flagger pauses and
@@ -224,7 +231,7 @@ rolls back the faulted version.
 Trigger another canary release:
 
 ```yaml{12}
-cat <<EOF > overlays/podinfo.yaml
+cat << EOF | tee overlays/podinfo.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -290,7 +297,7 @@ This is particularly useful for frontend applications that require session affin
 Create a Kustomize patch for the canary configuration by removing the max/step weight and adding a HTTP header match condition and iterations:
 
 ```sh{11,12}
-cat <<EOF > overlays/canary.yaml
+cat <<EOF | tee overlays/canary.yaml
 apiVersion: flagger.app/v1alpha3
 kind: Canary
 metadata:
@@ -314,7 +321,7 @@ targeting users with Chromium-based browsers.
 Add the canary patch to the kustomization:
 
 ```sh{9}
-cat <<EOF > kustomization.yaml
+cat <<EOF | tee kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
@@ -329,7 +336,7 @@ EOF
 Trigger another canary release:
 
 ```yaml{12}
-cat <<EOF > overlays/podinfo.yaml
+cat <<EOF | tee overlays/podinfo.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
