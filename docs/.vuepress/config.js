@@ -16,7 +16,8 @@ module.exports = {
             '/prerequisites/',
             '/profile/',
             '/canary/',
-            '/test/'
+            '/test/',
+            '/cleanup/',
         ]
     },
     head: [
