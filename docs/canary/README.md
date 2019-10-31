@@ -132,7 +132,7 @@ watch kubectl -n demo get canary
 Find the ingress public address with:
 
 ```sh
-export URL="http://$(kubectl -n demo get svc/ingress -ojson | jq -r .status.loadBalancer.ingress[].hostname)"
+export URL="http://$(kubectl -n demo get svc/ingress -ojson | jq -r ".status.loadBalancer.ingress[].hostname")"
 echo $URL
 ```
 
@@ -214,6 +214,13 @@ Watch Flagger logs:
 
 ```sh
 kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
+```
+
+Lastly, open up podinfo in the browser.
+You'll see that as Flagger shifts more traffic to the canary according to the policy in the Canary object,
+we see requests going to our new version of the app.
+```sh
+echo $URL
 ```
 
 ## Automated rollback

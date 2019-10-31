@@ -24,7 +24,9 @@ When you make changes to the configuration within git, these changes are reflect
 
 ## Create an EKS cluster
 
-Create an EKS cluster named `appmesh`:
+Create an EKS cluster named `appmesh`.
+Note that the region used in this lab is `us-west-2`.
+This will take around 15 minutes:
 
 ```sh
 cat << EOF | eksctl create cluster -f -
@@ -49,37 +51,32 @@ The above command will create a two nodes cluster with App Mesh IAM policy attac
 
 ## Create a GitHub repository
 
-Create a GitHub repository and clone it locally
-(replace the `GHUSER` value with your GitHub username):
+Create a GitHub repository and clone it locally:
+- https://github.com/new
 
+Replace `GH_USER`/`GH_REPO` value with your GitHub username and new repo.
+We'll use these variables to clone your repo and setup GitOps for your cluster.
 ```sh
-export GHUSER=username
-git clone https://github.com/${GHUSER}/appmesh-dev
-```
+export GH_USER=YOUR_GITHUB_USERNAME
+export GH_REPO=appmesh-dev
 
-Set your GitHub username and email:
-
-```sh
-cd appmesh-dev
-git config user.name "${GHUSER}"
-git config user.email "your@main.address"
+git clone https://github.com/${GH_USER}/${GH_REPO}
+cd ${GH_REPO}
 ```
 
 ## Install App Mesh
 
-Run the eksctl profile command (replace `GHUSER` with your GitHub username):
-
+Run the eksctl profile command:
 ```sh
-export GHUSER=username
 export EKSCTL_EXPERIMENTAL=true
 
 eksctl enable profile appmesh \
 --revision=demo \
 --cluster=appmesh \
 --region=us-west-2 \
---git-url=git@github.com:${GHUSER}/appmesh-dev \
---git-user=fluxcd \
---git-email=${GHUSER}@users.noreply.github.com
+--git-url="git@github.com:${GH_USER}/${GH_REPO}" \
+--git-user="fluxcd" \
+--git-email="${GH_USER}@users.noreply.github.com"
 ```
 
 The command `eksctl enable profile` takes an existing EKS cluster and an empty repository 
@@ -123,19 +120,26 @@ Status:
     Type:   MeshActive
 ```
 
-## Kustomize the profile
+## Sync your local repository
 
-Sync your local repository:
+`eksctl enable profile` pushed changes to our new repo.  
+Let's fetch them:
 
 ```sh
 git pull origin master
 ```
 
+## Kustomize the profile
+
+Kubernetes manifests can be long and complex, and our repo has a lot of them!
+We can use kustomize to create more targeted patches that make our code easier to factor, understand, and reuse.
+
 Create kustomization files for `base` and `flux` manifests:
 
 ```sh
-cd base && kustomize create --autodetect --recursive && cd .. \ &&
-cd flux && kustomize create --autodetect --recursive && cd ..
+for dir in ./flux ./base; do
+  ( pushd "$dir" && kustomize create --autodetect --recursive )
+done
 ```
 
 Create a kustomization file in the repo root:
@@ -164,10 +168,10 @@ EOF
 Verify the kustomization by running a dry run apply:
 
 ```sh
-kubectl apply --dry-run -k .
+kubectl apply --dry-run -k . && echo && echo "config is ok :)"
 ```
 
-Apply changes:
+Apply changes via git:
 
 ```sh
 git add -A && \
@@ -175,3 +179,5 @@ git commit -m "init kustomization" && \
 git push origin master && \
 fluxctl sync --k8s-fwd-ns flux
 ```
+
+Flux is now configured to patch our manifests before applying them to the cluster.
