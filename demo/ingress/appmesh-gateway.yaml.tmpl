@@ -1,0 +1,14 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: appmesh-gateway
+  namespace: demo
+spec:
+  releaseName: appmesh-gateway
+  chart:
+    git: https://github.com/stefanprodan/appmesh-gateway
+    ref: master
+    path: chart/appmesh-gateway
+  values:
+    mesh:
+      name: "{{ .ClusterName }}"

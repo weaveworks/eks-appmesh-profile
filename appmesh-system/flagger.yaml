@@ -10,6 +10,9 @@ spec:
     name: flagger
     version: 0.20.0
   values:
+    image:
+      repository: weaveworks/flagger
+      tag: master-614b7c7
     crd:
       create: false
     metricsServer: http://appmesh-prometheus:9090

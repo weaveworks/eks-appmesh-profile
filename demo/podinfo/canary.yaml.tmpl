@@ -24,6 +24,9 @@ spec:
     # container port name (optional)
     # can be http or grpc
     portName: http
+    # App Mesh Gateway external domain
+    hosts:
+      - "*"
     # App Mesh reference
     meshName: "{{ .ClusterName }}"
     # App Mesh retry policy (optional)
