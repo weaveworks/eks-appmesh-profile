@@ -6,17 +6,14 @@ title: Canary Releases
 
 To experiment with progressive delivery, you'll be using a small Go application called
 [podinfo](https://github.com/stefanprodan/prodinfo).
-The demo app is exposed outside the cluster with an Envoy proxy (ingress) and an ELB.
+The demo app is exposed outside the cluster with an Envoy proxy (ingress) and an NLB.
 The communication between the ingress and podinfo is managed by Flagger and App Mesh.
 
 ```sh
 base/demo/
 ├── namespace.yaml
 ├── ingress # Envoy proxy
-│   ├── config.yaml
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   └── virtual-node.yaml
+│   └── appmesh-gateway.yaml
 ├── podinfo # Demo app
 │   ├── canary.yaml
 │   ├── deployment.yaml
@@ -132,7 +129,7 @@ watch kubectl -n demo get canary
 Find the ingress public address with:
 
 ```sh
-export URL="http://$(kubectl -n demo get svc/ingress -ojson | jq -r ".status.loadBalancer.ingress[].hostname")"
+export URL="http://$(kubectl -n demo get svc/appmesh-gateway -ojson | jq -r ".status.loadBalancer.ingress[].hostname")"
 echo $URL
 ```
 
