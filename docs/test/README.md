@@ -85,7 +85,7 @@ spec:
           image: stefanprodan/podinfo:3.1.4
           env:
             - name: PODINFO_UI_LOGO
-              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+              value: https://eks.handson.flagger.dev/cuddle_clap.gif
 EOF
 ```
 

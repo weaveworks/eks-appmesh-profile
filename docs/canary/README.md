@@ -173,7 +173,7 @@ spec:
           image: stefanprodan/podinfo:3.1.1
           env:
             - name: PODINFO_UI_LOGO
-              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+              value: https://eks.handson.flagger.dev/cuddle_bunny.gif
 EOF
 ```
 
@@ -242,7 +242,7 @@ spec:
           image: stefanprodan/podinfo:3.1.2
           env:
             - name: PODINFO_UI_LOGO
-              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+              value: https://eks.handson.flagger.dev/cuddle_bunny.gif
 EOF
 ```
 
@@ -347,7 +347,7 @@ spec:
           image: stefanprodan/podinfo:3.1.3
           env:
             - name: PODINFO_UI_LOGO
-              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+              value: https://eks.handson.flagger.dev/cuddle_bunny.gif
 EOF
 ```
 
