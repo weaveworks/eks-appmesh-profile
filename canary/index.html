@@ -8,7 +8,7 @@
     <link rel="icon" href="/favicon.png">
   <link rel="stylesheet" href="/website.css">
     
-    <link rel="preload" href="/assets/css/0.styles.5b15de55.css" as="style"><link rel="preload" href="/assets/js/app.e285980e.js" as="script"><link rel="preload" href="/assets/js/2.b1c512a9.js" as="script"><link rel="preload" href="/assets/js/6.95188ee2.js" as="script"><link rel="prefetch" href="/assets/js/10.f593f28a.js"><link rel="prefetch" href="/assets/js/11.b7471754.js"><link rel="prefetch" href="/assets/js/12.6cffe9c8.js"><link rel="prefetch" href="/assets/js/3.1c941611.js"><link rel="prefetch" href="/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/assets/js/7.ef8fe44b.js"><link rel="prefetch" href="/assets/js/8.65df9981.js"><link rel="prefetch" href="/assets/js/9.a09f906b.js">
+    <link rel="preload" href="/assets/css/0.styles.5b15de55.css" as="style"><link rel="preload" href="/assets/js/app.f6a46e47.js" as="script"><link rel="preload" href="/assets/js/2.b1c512a9.js" as="script"><link rel="preload" href="/assets/js/6.a541bb71.js" as="script"><link rel="prefetch" href="/assets/js/10.3d33410c.js"><link rel="prefetch" href="/assets/js/11.7d899946.js"><link rel="prefetch" href="/assets/js/12.6cffe9c8.js"><link rel="prefetch" href="/assets/js/3.1c941611.js"><link rel="prefetch" href="/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/assets/js/7.99de2ac5.js"><link rel="prefetch" href="/assets/js/8.77e50137.js"><link rel="prefetch" href="/assets/js/9.5ce88c14.js">
     <link rel="stylesheet" href="/assets/css/0.styles.5b15de55.css">
   </head>
   <body>
@@ -121,7 +121,7 @@ spec:
           image: stefanprodan/podinfo:3.1.1
           env:
             - name: PODINFO_UI_LOGO
-              value: https://raw.githubusercontent.com/weaveworks/eks-appmesh-profile/website/logo/amazon-eks-wide.png
+              value: https://eks.handson.flagger.dev/cuddle_bunny.gif
 EOF
 </code></pre></div><p>Add the patch to the kustomization file:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> <span class="token function">tee</span> kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -157,7 +157,7 @@ rolls back the faulted version.</p> <p>Trigger another canary release:</p> <div 
           <span class="token key atrule">image</span><span class="token punctuation">:</span> stefanprodan/podinfo<span class="token punctuation">:</span>3.1.2
           <span class="token key atrule">env</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> PODINFO_UI_LOGO
-              <span class="token key atrule">value</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//raw.githubusercontent.com/weaveworks/eks<span class="token punctuation">-</span>appmesh<span class="token punctuation">-</span>profile/website/logo/amazon<span class="token punctuation">-</span>eks<span class="token punctuation">-</span>wide.png
+              <span class="token key atrule">value</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//eks.handson.flagger.dev/cuddle_bunny.gif
 EOF
 </code></pre></div><p>Apply changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
 <span class="token function">git</span> commit -m <span class="token string">&quot;update podinfo&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
@@ -224,7 +224,7 @@ EOF
           <span class="token key atrule">image</span><span class="token punctuation">:</span> stefanprodan/podinfo<span class="token punctuation">:</span>3.1.3
           <span class="token key atrule">env</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> PODINFO_UI_LOGO
-              <span class="token key atrule">value</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//raw.githubusercontent.com/weaveworks/eks<span class="token punctuation">-</span>appmesh<span class="token punctuation">-</span>profile/website/logo/amazon<span class="token punctuation">-</span>eks<span class="token punctuation">-</span>wide.png
+              <span class="token key atrule">value</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//eks.handson.flagger.dev/cuddle_bunny.gif
 EOF
 </code></pre></div><p>Apply changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
 <span class="token function">git</span> commit -m <span class="token string">&quot;update podinfo&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
@@ -252,6 +252,6 @@ to v3.1.3 wile using Firefox or Safari you'll get v3.1.2.</p></div> <footer clas
       ←
       <a href="/profile/" class="prev">App Mesh Profile</a></span> <span class="next"><a href="/test/">Canary Tests</a>→
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.e285980e.js" defer></script><script src="/assets/js/2.b1c512a9.js" defer></script><script src="/assets/js/6.95188ee2.js" defer></script>
+    <script src="/assets/js/app.f6a46e47.js" defer></script><script src="/assets/js/2.b1c512a9.js" defer></script><script src="/assets/js/6.a541bb71.js" defer></script>
   </body>
 </html>
