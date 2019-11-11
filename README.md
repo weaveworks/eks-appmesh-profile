@@ -18,7 +18,7 @@ eksctl create cluster --name=appmesh \
 
 The above command will create a two nodes cluster with App Mesh IAM policy attached to the EKS node instance role.
 
-Create a repository on GitHub and run the profile command
+Create a repository on GitHub and run the `enable repo` and `enable profile` commands
 (replace `GHUSER` and `GHREPO` values with your own):
 
 ```sh
@@ -26,6 +26,22 @@ export GHUSER=username
 export GHREPO=repo
 export EKSCTL_EXPERIMENTAL=true
 
+eksctl enable repo \
+--cluster=appmesh \
+--region=us-west-2 \
+--git-url=git@github.com:${GHUSER}/${GHREPO} \
+--git-user=fluxcd \
+--git-email=${GHUSER}@users.noreply.github.com
+```
+
+The command `eksctl enable repo` takes an existing EKS cluster and an empty repository 
+and sets up a GitOps pipeline.
+
+After the command finishes installing [FluxCD](https://github.com/fluxcd/flux) and [Helm Operator](https://github.com/fluxcd/flux),
+you will be asked to add Flux's deploy key to your GitHub repository.
+Once that is done, Flux will be able to pick up changes in the repository and deploy them to the cluster.
+
+```sh
 eksctl enable profile appmesh \
 --cluster=appmesh \
 --region=us-west-2 \
@@ -34,12 +50,8 @@ eksctl enable profile appmesh \
 --git-email=${GHUSER}@users.noreply.github.com
 ```
 
-The command `eksctl enable profile` takes an existing EKS cluster and an empty repository 
-and sets up a GitOps pipeline for the App Mesh control plane.
-
-After the command finishes installing [FluxCD](https://github.com/fluxcd/flux) and [Helm Operator](https://github.com/fluxcd/flux),
-you will be asked to add Flux's deploy key to your GitHub repository. 
-Once that is done, Flux will pick up the changes in the repository and deploy them to the cluster.
+The command `eksctl enable profile appmesh` installs the App Mesh control plane on this cluster,
+and adds its manifests to the configured repository.
 
 List the installed components:
 
