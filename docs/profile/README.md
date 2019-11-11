@@ -64,23 +64,21 @@ git clone https://github.com/${GH_USER}/${GH_REPO}
 cd ${GH_REPO}
 ```
 
-## Install App Mesh
+Run the eksctl repo command:
 
-Run the eksctl profile command:
 ```sh
 export EKSCTL_EXPERIMENTAL=true
 
-eksctl enable profile appmesh \
---revision=demo \
+eksctl enable repo \
 --cluster=appmesh \
 --region=us-west-2 \
---git-url="git@github.com:${GH_USER}/${GH_REPO}" \
 --git-user="fluxcd" \
---git-email="${GH_USER}@users.noreply.github.com"
+--git-email="${GH_USER}@users.noreply.github.com" \
+--git-url="git@github.com:${GH_USER}/${GH_REPO}"
 ```
 
-The command `eksctl enable profile` takes an existing EKS cluster and an empty repository 
-and sets up a GitOps pipeline for the App Mesh control plane.
+The command `eksctl enable repo` takes an existing EKS cluster and an empty repository 
+and sets up a GitOps pipeline.
 
 After the command finishes installing [FluxCD](https://github.com/fluxcd/flux) and [Helm Operator](https://github.com/fluxcd/flux),
 you will be asked to add Flux's SSH public key to your GitHub repository.
@@ -90,6 +88,28 @@ Go to `Settings > Deploy keys` click on `Add deploy key`, check `Allow write acc
 paste the Flux public key and click `Add key`.
 
 Once that is done, Flux will pick up the changes in the repository and deploy them to the cluster.
+
+## Install App Mesh
+
+Run the eksctl profile command:
+```sh
+eksctl enable profile appmesh \
+--revision=demo \
+--cluster=appmesh \
+--region=us-west-2 \
+--git-user="fluxcd" \
+--git-email="${GH_USER}@users.noreply.github.com" \
+--git-url="git@github.com:${GH_USER}/${GH_REPO}"
+```
+
+Run the fluxctl sync command to install the App Mesh control plane on your cluster:
+
+```sh
+fluxctl sync --k8s-fwd-ns flux
+```
+
+Flux does a git-cluster reconciliation every five minutes, the above command can be used to speed up the
+synchronization.
 
 List the installed components:
 
