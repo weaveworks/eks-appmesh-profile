@@ -8,10 +8,9 @@ spec:
   chart:
     repository: https://flagger.app
     name: flagger
-    version: 0.20.2
+    version: 0.20.3
   values:
     crd:
       create: false
     metricsServer: http://appmesh-prometheus:9090
     meshProvider: appmesh
-
