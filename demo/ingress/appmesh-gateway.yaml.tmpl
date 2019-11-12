@@ -6,9 +6,9 @@ metadata:
 spec:
   releaseName: appmesh-gateway
   chart:
-    git: https://github.com/stefanprodan/appmesh-gateway
-    ref: v0.5.0
-    path: chart/appmesh-gateway
+    repository: https://flagger.app
+    name: appmesh-gateway
+    version: 1.0.0
   values:
     mesh:
       name: "{{ .ClusterName }}"

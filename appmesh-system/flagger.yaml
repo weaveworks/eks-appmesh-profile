@@ -8,11 +8,11 @@ spec:
   chart:
     repository: https://flagger.app
     name: flagger
-    version: 0.20.0
+    version: 0.20.3
   values:
     image:
       repository: weaveworks/flagger
-      tag: master-614b7c7
+      tag: 0.20.3
     crd:
       create: false
     metricsServer: http://appmesh-prometheus:9090
