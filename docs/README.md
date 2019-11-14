@@ -20,6 +20,7 @@ T-shirts are available while supplies last only at KubeCon 2019 San Diego.
 ### Challenge
 
 * Your own laptop and an internet connection
+* Fill out this form [http://bit.ly/gitops-handson-form](http://bit.ly/gitops-handson-form)
 * Visit the AWS booth **#P16** and ask for the AWS credits to start this hands-on
 * Follow the self-paced workshop instructions
 * Visit the Weaveworks booth **#S51** and show a booth staff member your canary rollout status
