@@ -43,7 +43,7 @@ Install eksctl version 0.9.0 for macOS:
 
 ```sh
 brew tap weaveworks/tap
-brew install weaveworks/tap/eksctl@0.9.0
+brew install https://raw.githubusercontent.com/weaveworks/homebrew-tap/75596a00ca13dcffe184bb1f7ed60227e4b0891e/Formula/eksctl.rb
 ```
 
 Install eksctl for Windows:
