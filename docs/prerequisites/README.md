@@ -39,24 +39,24 @@ You'll need a GitHub account with `git` properly configured:
 
 ## eksctl
 
-Install eksctl version 0.9.0 for macOS:
+Install eksctl version 0.10.2 or newer for macOS:
 
 ```sh
 brew tap weaveworks/tap
-brew install https://raw.githubusercontent.com/weaveworks/homebrew-tap/75596a00ca13dcffe184bb1f7ed60227e4b0891e/Formula/eksctl.rb
+brew install weaveworks/tap/eksctl
 ```
 
 Install eksctl for Windows:
 
 ```sh
-chocolatey install eksctl --version 0.9.0
+chocolatey install eksctl --version 0.10.2
 ```
 
 Install eksctl for Linux:
 
 ```sh
 curl --silent --location \
-"https://github.com/weaveworks/eksctl/releases/download/0.9.0/eksctl_Linux_amd64.tar.gz" \
+"https://github.com/weaveworks/eksctl/releases/download/0.10.2/eksctl_Linux_amd64.tar.gz" \
 | tar xz -C /tmp
 
 sudo mv /tmp/eksctl /usr/local/bin
