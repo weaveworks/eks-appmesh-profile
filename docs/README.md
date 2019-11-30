@@ -31,7 +31,7 @@ GitOps and Progressive Delivery using Amazon EKS, eksctl, AWS App Mesh, Flux and
 * Your own laptop and an internet connection
 * Fill out this form [http://bit.ly/gitops-handson-form](http://bit.ly/gitops-handson-form)
 * You own an AWS account (this costs about $1-2 to complete and about $7/week if you keep the cluster)
-* Follow the self-paced workshop instructions (you can stop right before the canary rollback step)
+* Follow the self-paced workshop instructions through the end of the "Automated Canary Promotion" section
 
 If we can come to your city, we will bring you this T-shirt. (So don't forget to fill out the form!)
 
