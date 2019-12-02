@@ -62,6 +62,7 @@ NAMESPACE        NAME                 RELEASE              STATUS     MESSAGE   
 appmesh-system   appmesh-controller   appmesh-controller   DEPLOYED   helm install succeeded   1m
 appmesh-system   appmesh-inject       appmesh-inject       DEPLOYED   helm install succeeded   1m
 appmesh-system   appmesh-prometheus   appmesh-prometheus   DEPLOYED   helm install succeeded   1m
+appmesh-system   appmesh-grafana      appmesh-grafana      DEPLOYED   helm install succeeded   1m
 appmesh-system   flagger              flagger              DEPLOYED   helm install succeeded   1m
 kube-system      metrics-server       metrics-server       DEPLOYED   helm install succeeded   1m
 ```
@@ -81,3 +82,14 @@ Status:
     Status: True
     Type:   MeshActive
 ```
+
+Access the Grafana dashboards with:
+
+```sh
+kubectl -n appmesh-system port-forward svc/appmesh-grafana 3000:3000
+```
+
+Open your browser and navigate to `localhost:3000`.
+
+![AWS App Mesh: Control Plane](https://user-images.githubusercontent.com/3797675/68316268-da565300-00c1-11ea-96b5-20634fed2c46.png)
+![AWS App Mesh: Data Plane](https://user-images.githubusercontent.com/3797675/68325902-0c23e580-00d3-11ea-8f2a-f10f972fe0ac.png)
