@@ -1,0 +1,11 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: appmesh-grafana
+  namespace: appmesh-system
+spec:
+  releaseName: appmesh-grafana
+  chart:
+    git: https://github.com/aws/eks-charts
+    ref: master
+    path: stable/appmesh-grafana
