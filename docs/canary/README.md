@@ -5,7 +5,7 @@ title: Canary Releases
 # Canary Releases
 
 To experiment with progressive delivery, you'll be using a small Go application called
-[podinfo](https://github.com/stefanprodan/prodinfo).
+[podinfo](https://github.com/stefanprodan/podinfo).
 The demo app is exposed outside the cluster with an Envoy proxy (ingress) and an NLB.
 The communication between the ingress and podinfo is managed by Flagger and App Mesh.
 
