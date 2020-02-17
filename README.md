@@ -30,7 +30,7 @@ eksctl enable repo \
 --cluster=appmesh \
 --region=us-west-2 \
 --git-url=git@github.com:${GHUSER}/${GHREPO} \
---git-user=fluxcd \
+--git-user=${GHUSER} \
 --git-email=${GHUSER}@users.noreply.github.com
 ```
 
