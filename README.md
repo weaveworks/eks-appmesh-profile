@@ -37,7 +37,7 @@ eksctl enable repo \
 The command `eksctl enable repo` takes an existing EKS cluster and an empty repository 
 and sets up a GitOps pipeline.
 
-After the command finishes installing [FluxCD](https://github.com/fluxcd/flux) and [Helm Operator](https://github.com/fluxcd/flux),
+After the command finishes installing [Flux](https://github.com/fluxcd/flux) and [Helm Operator](https://github.com/fluxcd/flux),
 you will be asked to add Flux's deploy key to your GitHub repository.
 Once that is done, Flux will be able to pick up changes in the repository and deploy them to the cluster.
 
