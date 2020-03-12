@@ -12,13 +12,13 @@ Create a Kustomize patch for the podinfo canary in `overlays/canary.yaml`:
 
 ```sh{10,17}
 cat << EOF | tee overlays/canary.yaml
-apiVersion: flagger.app/v1alpha3
+apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: podinfo
   namespace: demo
 spec:
-  canaryAnalysis:
+  analysis:
     webhooks:
       - name: acceptance-test-token
         type: pre-rollout

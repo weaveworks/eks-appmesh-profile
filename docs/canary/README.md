@@ -34,7 +34,7 @@ to automate the conformance testing, analysis and promotion of a canary release.
 A canary release is described with a Kubernetes custom resource named **Canary**.
 
 ```yaml
-apiVersion: flagger.app/v1alpha3
+apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: podinfo
@@ -50,17 +50,19 @@ spec:
   service:
     port: 9898
     meshName: appmesh
-  canaryAnalysis:
+  analysis:
     interval: 10s
     stepWeight: 5
     maxWeight: 50
     threshold: 5
     metrics:
     - name: request-success-rate
-      threshold: 99
+      thresholdRange:
+        min: 99
       interval: 1m
     - name: request-duration
-      threshold: 500
+      thresholdRange:
+        max: 500
       interval: 1m
     webhooks:
       - name: load-test
@@ -295,13 +297,13 @@ Create a Kustomize patch for the canary configuration by removing the max/step w
 
 ```sh{11,12}
 cat <<EOF | tee overlays/canary.yaml
-apiVersion: flagger.app/v1alpha3
+apiVersion: flagger.app/v1beta2
 kind: Canary
 metadata:
   name: podinfo
   namespace: demo
 spec:
-  canaryAnalysis:
+  analysis:
     interval: 30s
     threshold: 10
     iterations: 10
