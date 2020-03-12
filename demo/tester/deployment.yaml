@@ -25,7 +25,7 @@ spec:
             - -port=8080
             - -log-level=info
             - -timeout=1h
-          image: weaveworks/flagger-loadtester:0.9.0
+          image: weaveworks/flagger-loadtester:0.13.0
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
