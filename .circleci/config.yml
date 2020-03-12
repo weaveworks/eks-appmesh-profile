@@ -2,17 +2,9 @@ version: 2.1
 jobs:
   kubeval:
     docker:
-      - image: circleci/golang:1.13
+      - image: stefanprodan/hrval:v3.1.0
     steps:
       - checkout
-      - run:
-          name: Install kubeval and hrval
-          command: |
-            curl -sL https://raw.githubusercontent.com/stefanprodan/hrval-action/v2.2.0/src/deps.sh | sudo bash
-            sudo curl -sL https://raw.githubusercontent.com/stefanprodan/hrval-action/v2.2.0/src/hrval.sh \
-              -o /usr/local/bin/hrval.sh && sudo chmod +x /usr/local/bin/hrval.sh
-            sudo curl -sL https://raw.githubusercontent.com/stefanprodan/hrval-action/v2.2.0/src/hrval-all.sh \
-              -o /usr/local/bin/hrval && sudo chmod +x /usr/local/bin/hrval
       - run:
           name: Validate manifests
           command: |
@@ -20,11 +12,8 @@ jobs:
       - run:
           name: Validate helm releases
           command: |
-            hrval appmesh-system/appmesh-prometheus.yaml false master v3
-            hrval appmesh-system/appmesh-controller.yaml false master v3
-            hrval appmesh-system/appmesh-inject.yaml.tmpl true master v3
             hrval appmesh-system/flagger.yaml false master v3
-            hrval kube-system/ false master v2
+            hrval kube-system/ false master v3
 
 workflows:
   version: 2
