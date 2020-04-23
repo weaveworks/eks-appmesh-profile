@@ -60,7 +60,7 @@ We'll use these variables to clone your repo and setup GitOps for your cluster.
 export GH_USER=YOUR_GITHUB_USERNAME
 export GH_REPO=appmesh-dev
 
-git clone https://github.com/${GH_USER}/${GH_REPO}
+git clone git@github.com:${GH_USER}/${GH_REPO}
 cd ${GH_REPO}
 ```
 
