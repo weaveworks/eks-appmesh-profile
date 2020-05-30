@@ -23,6 +23,7 @@ module.exports = {
     head: [
         ['link', { rel: 'icon', href: '/favicon.png' }],
         ['link', { rel: 'stylesheet', href: '/website.css' }]
-    ]
+    ],
+    plugins: ['one-click-copy']
 };
 
