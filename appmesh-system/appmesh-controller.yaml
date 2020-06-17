@@ -7,5 +7,5 @@ spec:
   releaseName: appmesh-controller
   chart:
     git: https://github.com/aws/eks-charts
-    ref: master
+    ref: preview
     path: stable/appmesh-controller

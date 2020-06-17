@@ -6,9 +6,10 @@ metadata:
 spec:
   releaseName: appmesh-gateway
   chart:
-    repository: https://flagger.app
-    name: appmesh-gateway
-    version: 1.1.0
+    git: https://github.com/aws/eks-charts
+    ref: preview
+    path: stable/appmesh-gateway
   values:
-    mesh:
-      name: "{{ .ClusterName }}"
+    appmesh:
+      preview: true
+      gateway: true
