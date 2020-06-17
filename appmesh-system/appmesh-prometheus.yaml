@@ -6,8 +6,8 @@ metadata:
 spec:
   releaseName: appmesh-prometheus
   chart:
-    git: https://github.com/aws/eks-charts
-    ref: master
-    path: stable/appmesh-prometheus
+    repository: https://aws.github.io/eks-charts
+    name: appmesh-prometheus
+    version:  0.3.0
   values:
     retention: 2h

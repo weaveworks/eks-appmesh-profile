@@ -6,9 +6,9 @@ metadata:
 spec:
   releaseName: appmesh-inject
   chart:
-    git: https://github.com/aws/eks-charts
-    ref: master
-    path: stable/appmesh-inject
+    repository: https://aws.github.io/eks-charts
+    name: appmesh-inject
+    version:  0.14.1
   values:
     mesh:
       create: true

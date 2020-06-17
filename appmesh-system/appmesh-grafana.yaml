@@ -6,6 +6,6 @@ metadata:
 spec:
   releaseName: appmesh-grafana
   chart:
-    git: https://github.com/stefanprodan/eks-charts
-    ref: grafana
-    path: stable/appmesh-grafana
+    repository: https://aws.github.io/eks-charts
+    name: appmesh-grafana
+    version:  0.1.1

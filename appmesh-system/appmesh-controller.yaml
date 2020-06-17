@@ -6,6 +6,6 @@ metadata:
 spec:
   releaseName: appmesh-controller
   chart:
-    git: https://github.com/aws/eks-charts
-    ref: master
-    path: stable/appmesh-controller
+    repository: https://aws.github.io/eks-charts
+    name: appmesh-controller
+    version:  0.6.1
