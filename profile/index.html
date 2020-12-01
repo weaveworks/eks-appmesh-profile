@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/website.css">
     <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, Flux and Flagger">
     
-    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.a99832df.js" as="script"><link rel="preload" href="/assets/js/2.f0d0630b.js" as="script"><link rel="preload" href="/assets/js/12.3989a20d.js" as="script"><link rel="prefetch" href="/assets/js/10.ff610165.js"><link rel="prefetch" href="/assets/js/11.18106ee5.js"><link rel="prefetch" href="/assets/js/13.44a85897.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.99c53228.js"><link rel="prefetch" href="/assets/js/8.0120bba0.js"><link rel="prefetch" href="/assets/js/9.62a9d6aa.js">
+    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.c95fa5f4.js" as="script"><link rel="preload" href="/assets/js/2.f0d0630b.js" as="script"><link rel="preload" href="/assets/js/12.1f050a03.js" as="script"><link rel="prefetch" href="/assets/js/10.ff610165.js"><link rel="prefetch" href="/assets/js/11.18106ee5.js"><link rel="prefetch" href="/assets/js/13.44a85897.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.99c53228.js"><link rel="prefetch" href="/assets/js/8.0120bba0.js"><link rel="prefetch" href="/assets/js/9.62a9d6aa.js">
     <link rel="stylesheet" href="/assets/css/0.styles.30280a51.css">
   </head>
   <body>
@@ -34,13 +34,13 @@ and export your access token, username and repo:</p> <div class="language-sh ext
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">GITHUB_REPO</span><span class="token operator">=</span>gitops-appmesh
 </code></pre></div><p>Clone the repository on your local machine:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> clone https://github.com/<span class="token variable">${GITHUB_USER}</span>/<span class="token variable">${GITHUB_REPO}</span>.git
 <span class="token builtin class-name">cd</span> <span class="token variable">${GITHUB_REPO}</span>
-</code></pre></div><h2 id="cluster-bootstrap"><a href="#cluster-bootstrap" aria-hidden="true" class="header-anchor">#</a> Cluster bootstrap</h2> <p>Create an EKS cluster named <code>appmesh</code>.
+</code></pre></div><h2 id="cluster-bootstrap"><a href="#cluster-bootstrap" aria-hidden="true" class="header-anchor">#</a> Cluster bootstrap</h2> <p>Create an EKS cluster named <code>gitops-appmesh</code>.
 Note that the region used in this lab is <code>us-west-2</code>.
 This will take around 15 minutes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> eksctl create cluster -f -
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
-  name: appmesh
+  name: gitops-appmesh
   region: us-west-2
 nodeGroups:
   - name: default
@@ -88,6 +88,6 @@ kube-system    	metrics-server    	5.0.1   	True
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.a99832df.js" defer></script><script src="/assets/js/2.f0d0630b.js" defer></script><script src="/assets/js/12.3989a20d.js" defer></script>
+    <script src="/assets/js/app.c95fa5f4.js" defer></script><script src="/assets/js/2.f0d0630b.js" defer></script><script src="/assets/js/12.1f050a03.js" defer></script>
   </body>
 </html>
