@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/website.css">
     <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, Flux and Flagger">
     
-    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.a7f8c1ba.js" as="script"><link rel="preload" href="/assets/js/2.f0d0630b.js" as="script"><link rel="preload" href="/assets/js/8.a234c1c1.js" as="script"><link rel="prefetch" href="/assets/js/10.1113bafa.js"><link rel="prefetch" href="/assets/js/11.ad6d44ee.js"><link rel="prefetch" href="/assets/js/12.3989a20d.js"><link rel="prefetch" href="/assets/js/13.44a85897.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.99c53228.js"><link rel="prefetch" href="/assets/js/9.62a9d6aa.js">
+    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.a99832df.js" as="script"><link rel="preload" href="/assets/js/2.f0d0630b.js" as="script"><link rel="preload" href="/assets/js/8.0120bba0.js" as="script"><link rel="prefetch" href="/assets/js/10.ff610165.js"><link rel="prefetch" href="/assets/js/11.18106ee5.js"><link rel="prefetch" href="/assets/js/12.3989a20d.js"><link rel="prefetch" href="/assets/js/13.44a85897.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.99c53228.js"><link rel="prefetch" href="/assets/js/9.62a9d6aa.js">
     <link rel="stylesheet" href="/assets/css/0.styles.30280a51.css">
   </head>
   <body>
@@ -43,7 +43,7 @@ podinfo   Initialized 0        2020-11-14T12:03:39Z
   &quot;hostname&quot;: &quot;podinfo-primary-5cf44b9799-lgq79&quot;,
   &quot;version&quot;: &quot;5.0.0&quot;
 }
-</code></pre></div><p>When the URL becomes available, open it in a browser and you'll see the podinfo UI.</p> <p><img src="podinfo-500.png" alt="podinfo"></p> <h2 id="automated-canary-promotion"><a href="#automated-canary-promotion" aria-hidden="true" class="header-anchor">#</a> Automated canary promotion</h2> <p>When you deploy a new podinfo version, Flagger gradually shifts traffic to the canary,
+</code></pre></div><p>When the URL becomes available, open it in a browser and you'll see the podinfo UI.</p> <p><img src="/podinfo-500.png" alt="podinfo"></p> <h2 id="automated-canary-promotion"><a href="#automated-canary-promotion" aria-hidden="true" class="header-anchor">#</a> Automated canary promotion</h2> <p>When you deploy a new podinfo version, Flagger gradually shifts traffic to the canary,
 and at the same time, measures the requests success rate as well as the average response duration.
 Based on an analysis of these App Mesh provided metrics, a canary deployment is either promoted or rolled back.</p> <p>Pull the changes from GitHub:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> pull origin main
 </code></pre></div><p>The canary analysis is defined in <code>./apps/podinfo/canary.yaml</code>:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>  <span class="token key atrule">analysis</span><span class="token punctuation">:</span>
@@ -153,6 +153,6 @@ as they were not routed to <code>5.0.2</code> during the analysis.</p></div> <fo
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.a7f8c1ba.js" defer></script><script src="/assets/js/2.f0d0630b.js" defer></script><script src="/assets/js/8.a234c1c1.js" defer></script>
+    <script src="/assets/js/app.a99832df.js" defer></script><script src="/assets/js/2.f0d0630b.js" defer></script><script src="/assets/js/8.0120bba0.js" defer></script>
   </body>
 </html>
