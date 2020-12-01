@@ -4,27 +4,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>App Mesh Profile | EKS GitOps hands-on</title>
-    <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, FluxCD and Flagger">
+    <meta name="generator" content="VuePress 1.7.1">
     <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="/website.css">
+    <link rel="stylesheet" href="/website.css">
+    <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, Flux and Flagger">
     
-    <link rel="preload" href="/assets/css/0.styles.eaa96da7.css" as="style"><link rel="preload" href="/assets/js/app.7f17592b.js" as="script"><link rel="preload" href="/assets/js/2.6d2bdb73.js" as="script"><link rel="preload" href="/assets/js/10.25b3cc2a.js" as="script"><link rel="prefetch" href="/assets/js/11.f7ea43dd.js"><link rel="prefetch" href="/assets/js/12.3db5c125.js"><link rel="prefetch" href="/assets/js/3.4c6d1207.js"><link rel="prefetch" href="/assets/js/4.28a74c59.js"><link rel="prefetch" href="/assets/js/5.a1270f28.js"><link rel="prefetch" href="/assets/js/6.c86693b5.js"><link rel="prefetch" href="/assets/js/7.a7e283f7.js"><link rel="prefetch" href="/assets/js/8.e329f12a.js"><link rel="prefetch" href="/assets/js/9.872b1884.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.eaa96da7.css">
+    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.a7f8c1ba.js" as="script"><link rel="preload" href="/assets/js/2.f0d0630b.js" as="script"><link rel="preload" href="/assets/js/12.3989a20d.js" as="script"><link rel="prefetch" href="/assets/js/10.1113bafa.js"><link rel="prefetch" href="/assets/js/11.ad6d44ee.js"><link rel="prefetch" href="/assets/js/13.44a85897.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.99c53228.js"><link rel="prefetch" href="/assets/js/8.a234c1c1.js"><link rel="prefetch" href="/assets/js/9.62a9d6aa.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.30280a51.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">EKS GitOps hands-on</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">EKS GitOps hands-on</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
     GitHub
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
     GitHub
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Home</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/intro/" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/intro/#what-is-gitops" class="sidebar-link">What is GitOps?</a></li><li class="sidebar-sub-header"><a href="/intro/#what-is-progressive-delivery" class="sidebar-link">What is Progressive Delivery?</a></li></ul></li><li><a href="/prerequisites/" class="sidebar-link">Prerequisites</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/prerequisites/#aws-cli" class="sidebar-link">aws cli</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#aws-iam-authenticator" class="sidebar-link">aws-iam-authenticator</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#github" class="sidebar-link">GitHub</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#eksctl" class="sidebar-link">eksctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#fluxctl" class="sidebar-link">fluxctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#kustomize" class="sidebar-link">kustomize</a></li></ul></li><li><a href="/profile/" class="active sidebar-link">App Mesh Profile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/profile/#create-an-eks-cluster" class="sidebar-link">Create an EKS cluster</a></li><li class="sidebar-sub-header"><a href="/profile/#create-a-github-repository" class="sidebar-link">Create a GitHub repository</a></li><li class="sidebar-sub-header"><a href="/profile/#install-app-mesh" class="sidebar-link">Install App Mesh</a></li><li class="sidebar-sub-header"><a href="/profile/#sync-your-local-repository" class="sidebar-link">Sync your local repository</a></li><li class="sidebar-sub-header"><a href="/profile/#kustomize-the-profile" class="sidebar-link">Kustomize the profile</a></li></ul></li><li><a href="/canary/" class="sidebar-link">Canary Releases</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/canary/#canary-custom-resource" class="sidebar-link">Canary custom resource</a></li><li class="sidebar-sub-header"><a href="/canary/#application-bootstrap" class="sidebar-link">Application bootstrap</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-canary-promotion" class="sidebar-link">Automated canary promotion</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-rollback" class="sidebar-link">Automated rollback</a></li><li class="sidebar-sub-header"><a href="/canary/#a-b-testing" class="sidebar-link">A/B Testing</a></li></ul></li><li><a href="/test/" class="sidebar-link">Canary Tests</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/test/#create-tests" class="sidebar-link">Create tests</a></li><li class="sidebar-sub-header"><a href="/test/#run-tests" class="sidebar-link">Run tests</a></li></ul></li><li><a href="/cleanup/" class="sidebar-link">Cleanup</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="app-mesh-profile"><a href="#app-mesh-profile" aria-hidden="true" class="header-anchor">#</a> App Mesh Profile</h1> <p>The App Mesh integration with EKS is made out of the following components:</p> <ul><li><strong>Kubernetes custom resources</strong> -
-mesh, virtual nodes and virtual services</li> <li><strong>CRD controller</strong> -
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">EKS GitOps hands-on</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/intro/" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/intro/#what-is-gitops" class="sidebar-link">What is GitOps?</a></li><li class="sidebar-sub-header"><a href="/intro/#what-is-progressive-delivery" class="sidebar-link">What is Progressive Delivery?</a></li></ul></li><li><a href="/prerequisites/" class="sidebar-link">Prerequisites</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/prerequisites/#aws-cli" class="sidebar-link">aws cli</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#aws-iam-authenticator" class="sidebar-link">aws-iam-authenticator</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#github" class="sidebar-link">GitHub</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#eksctl" class="sidebar-link">eksctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#flux" class="sidebar-link">flux</a></li></ul></li><li><a href="/profile/" aria-current="page" class="active sidebar-link">App Mesh Profile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/profile/#create-a-github-repository" class="sidebar-link">Create a GitHub repository</a></li><li class="sidebar-sub-header"><a href="/profile/#cluster-bootstrap" class="sidebar-link">Cluster bootstrap</a></li></ul></li><li><a href="/canary/" class="sidebar-link">Canary Releases</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/canary/#application-bootstrap" class="sidebar-link">Application bootstrap</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-canary-promotion" class="sidebar-link">Automated canary promotion</a></li><li class="sidebar-sub-header"><a href="/canary/#a-b-testing" class="sidebar-link">A/B Testing</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-rollback" class="sidebar-link">Automated rollback</a></li></ul></li><li><a href="/test/" class="sidebar-link">Canary Tests</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/test/#define-tests" class="sidebar-link">Define tests</a></li><li class="sidebar-sub-header"><a href="/test/#run-tests" class="sidebar-link">Run tests</a></li><li class="sidebar-sub-header"><a href="/test/#manual-gating" class="sidebar-link">Manual Gating</a></li></ul></li><li><a href="/cleanup/" class="sidebar-link">Cleanup</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="app-mesh-profile"><a href="#app-mesh-profile" aria-hidden="true" class="header-anchor">#</a> App Mesh Profile</h1> <p>The App Mesh integration with EKS is made out of the following components:</p> <ul><li><strong>Kubernetes custom resources</strong> -
+mesh, virtual nodes, services and gateways</li> <li><strong>CRD controller</strong> -
 keeps the custom resources in sync with the App Mesh control plane</li> <li><strong>Admission controller</strong> -
 injects the Envoy sidecar and assigns pods to App Mesh virtual nodes</li> <li><strong>Telemetry service</strong> -
 Prometheus instance that collects and stores Envoy's metrics</li> <li><strong>Progressive delivery operator</strong> -
-Flagger instance that automates canary releases on top of App Mesh</li></ul> <p>To install these components you'll be using the eksctl <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer">App Mesh profile<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.
-With eksctl profiles you can launch a fully-configured managed Kubernetes cluster with EKS and
-easily add the software required to run your production applications.
-When you make changes to the configuration within git, these changes are reflected on your cluster.</p> <h2 id="create-an-eks-cluster"><a href="#create-an-eks-cluster" aria-hidden="true" class="header-anchor">#</a> Create an EKS cluster</h2> <p>Create an EKS cluster named <code>appmesh</code>.
+Flagger instance that automates canary releases on top of App Mesh</li></ul> <h2 id="create-a-github-repository"><a href="#create-a-github-repository" aria-hidden="true" class="header-anchor">#</a> Create a GitHub repository</h2> <p>In order to follow the guide you'll need a GitHub account and a
+<a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line" target="_blank" rel="noopener noreferrer">personal access token<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+that can create repositories (check all permissions under <code>repo</code>).</p> <p>Fork <a href="https://github.com/stefanprodan/gitops-appmesh" target="_blank" rel="noopener noreferrer">this repository<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> on your personal GitHub account
+and export your access token, username and repo:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">GITHUB_TOKEN</span><span class="token operator">=</span>YOUR_GITHUB_TOKEN
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">GITHUB_USER</span><span class="token operator">=</span>YOUR_GITHUB_USERNAME
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">GITHUB_REPO</span><span class="token operator">=</span>gitops-appmesh
+</code></pre></div><p>Clone the repository on your local machine:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> clone https://github.com/<span class="token variable">${GITHUB_USER}</span>/<span class="token variable">${GITHUB_REPO}</span>.git
+<span class="token builtin class-name">cd</span> <span class="token variable">${GITHUB_REPO}</span>
+</code></pre></div><h2 id="cluster-bootstrap"><a href="#cluster-bootstrap" aria-hidden="true" class="header-anchor">#</a> Cluster bootstrap</h2> <p>Create an EKS cluster named <code>appmesh</code>.
 Note that the region used in this lab is <code>us-west-2</code>.
 This will take around 15 minutes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> eksctl create cluster -f -
 apiVersion: eksctl.io/v1alpha5
@@ -42,80 +52,42 @@ nodeGroups:
         appMesh: <span class="token boolean">true</span>
         xRay: <span class="token boolean">true</span>
 EOF
-</code></pre></div><p>The above command will create a two nodes cluster with App Mesh IAM policy attached to the EKS node instance role.</p> <h2 id="create-a-github-repository"><a href="#create-a-github-repository" aria-hidden="true" class="header-anchor">#</a> Create a GitHub repository</h2> <p>Create a GitHub repository and clone it locally:</p> <ul><li>https://github.com/new</li></ul> <p>Replace <code>GH_USER</code>/<code>GH_REPO</code> value with your GitHub username and new repo.
-We'll use these variables to clone your repo and setup GitOps for your cluster.</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">GH_USER</span><span class="token operator">=</span>YOUR_GITHUB_USERNAME
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">GH_REPO</span><span class="token operator">=</span>appmesh-dev
-
-<span class="token function">git</span> clone git@github.com:<span class="token variable">${GH_USER}</span>/<span class="token variable">${GH_REPO}</span>
-<span class="token builtin class-name">cd</span> <span class="token variable">${GH_REPO}</span>
-</code></pre></div><p>Run the eksctl repo command:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">EKSCTL_EXPERIMENTAL</span><span class="token operator">=</span>true
-
-eksctl <span class="token builtin class-name">enable</span> repo <span class="token punctuation">\</span>
---cluster<span class="token operator">=</span>appmesh <span class="token punctuation">\</span>
---region<span class="token operator">=</span>us-west-2 <span class="token punctuation">\</span>
---git-user<span class="token operator">=</span><span class="token string">&quot;fluxcd&quot;</span> <span class="token punctuation">\</span>
---git-email<span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${GH_USER}</span>@users.noreply.github.com&quot;</span> <span class="token punctuation">\</span>
---git-url<span class="token operator">=</span><span class="token string">&quot;git@github.com:<span class="token variable">${GH_USER}</span>/<span class="token variable">${GH_REPO}</span>&quot;</span>
-</code></pre></div><p>The command <code>eksctl enable repo</code> takes an existing EKS cluster and an empty repository
-and sets up a GitOps pipeline.</p> <p>After the command finishes installing <a href="https://github.com/fluxcd/flux" target="_blank" rel="noopener noreferrer">FluxCD<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> and <a href="https://github.com/fluxcd/flux" target="_blank" rel="noopener noreferrer">Helm Operator<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>,
-you will be asked to add Flux's SSH public key to your GitHub repository.</p> <p>Copy the public key and create a deploy key with write access on your GitHub repository.
-Go to <code>Settings &gt; Deploy keys</code> click on <code>Add deploy key</code>, check <code>Allow write access</code>,
-paste the Flux public key and click <code>Add key</code>.</p> <p>Once that is done, Flux will pick up the changes in the repository and deploy them to the cluster.</p> <h2 id="install-app-mesh"><a href="#install-app-mesh" aria-hidden="true" class="header-anchor">#</a> Install App Mesh</h2> <p>Run the eksctl profile command:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>eksctl <span class="token builtin class-name">enable</span> profile appmesh <span class="token punctuation">\</span>
---revision<span class="token operator">=</span>demo <span class="token punctuation">\</span>
---cluster<span class="token operator">=</span>appmesh <span class="token punctuation">\</span>
---region<span class="token operator">=</span>us-west-2 <span class="token punctuation">\</span>
---git-user<span class="token operator">=</span><span class="token string">&quot;fluxcd&quot;</span> <span class="token punctuation">\</span>
---git-email<span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${GH_USER}</span>@users.noreply.github.com&quot;</span> <span class="token punctuation">\</span>
---git-url<span class="token operator">=</span><span class="token string">&quot;git@github.com:<span class="token variable">${GH_USER}</span>/<span class="token variable">${GH_REPO}</span>&quot;</span>
-</code></pre></div><p>Run the fluxctl sync command to install the App Mesh control plane on your cluster:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
-</code></pre></div><p>Flux does a git-cluster reconciliation every five minutes, the above command can be used to speed up the
-synchronization.</p> <p>List the installed components:</p> <div class="language- extra-class"><pre class="language-text"><code>$ watch kubectl get helmreleases --all-namespaces
-
-NAMESPACE        NAME                 RELEASE              STATUS     MESSAGE                  AGE
-appmesh-system   appmesh-controller   appmesh-controller   DEPLOYED   helm install succeeded   1m
-appmesh-system   appmesh-inject       appmesh-inject       DEPLOYED   helm install succeeded   1m
-appmesh-system   appmesh-prometheus   appmesh-prometheus   DEPLOYED   helm install succeeded   1m
-appmesh-system   flagger              flagger              DEPLOYED   helm install succeeded   1m
-kube-system      metrics-server       metrics-server       DEPLOYED   helm install succeeded   1m
-</code></pre></div><p>Verify that the mesh has been created and it's active:</p> <div class="language- extra-class"><pre class="language-text"><code>$ kubectl describe mesh
-
-Name:         appmesh
-API Version:  appmesh.k8s.aws/v1beta1
-Kind:         Mesh
-Spec:
-  Service Discovery Type:  dns
-Status:
-  Mesh Condition:
-    Status: True
-    Type:   MeshActive
-</code></pre></div><h2 id="sync-your-local-repository"><a href="#sync-your-local-repository" aria-hidden="true" class="header-anchor">#</a> Sync your local repository</h2> <p><code>eksctl enable profile</code> pushed changes to our new repo.<br>
-Let's fetch them:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> pull origin master
-</code></pre></div><h2 id="kustomize-the-profile"><a href="#kustomize-the-profile" aria-hidden="true" class="header-anchor">#</a> Kustomize the profile</h2> <p>Kubernetes manifests can be long and complex, and our repo has a lot of them!
-We can use kustomize to create more targeted patches that make our code easier to factor, understand, and reuse.</p> <p>Create kustomization files for <code>base</code> and <code>flux</code> manifests:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token keyword">for</span> <span class="token for-or-select variable">dir</span> <span class="token keyword">in</span> ./flux ./base<span class="token punctuation">;</span> <span class="token keyword">do</span>
-  <span class="token punctuation">(</span> <span class="token function">pushd</span> <span class="token string">&quot;<span class="token variable">$dir</span>&quot;</span> <span class="token operator">&amp;&amp;</span> kustomize create --autodetect --recursive <span class="token punctuation">)</span>
-<span class="token keyword">done</span>
-</code></pre></div><p>Create a kustomization file in the repo root:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> <span class="token function">tee</span> kustomization.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-bases:
-  - base
-  - flux
-EOF
-</code></pre></div><p>Create <code>.flux.yaml</code> file in the repo root:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> <span class="token function">tee</span> .flux.yaml
-version: <span class="token number">1</span>
-commandUpdated:
-  generators:
-    - command: kustomize build <span class="token builtin class-name">.</span>
-EOF
-</code></pre></div><p>Verify the kustomization by running a dry run apply:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>kubectl apply --dry-run -k <span class="token builtin class-name">.</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">&quot;config is ok :)&quot;</span>
-</code></pre></div><p>Apply changes via git:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> commit -m <span class="token string">&quot;init kustomization&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> push origin master <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
-</code></pre></div><p>Flux is now configured to patch our manifests before applying them to the cluster.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p>The above command will create a two nodes cluster with App Mesh IAM policy attached to the EKS node instance role.</p> <p>Verify that your EKS cluster satisfies the prerequisites with:</p> <div class="language-console extra-class"><pre class="language-text"><code>$ flux check --pre
+► checking prerequisites
+✔ kubectl 1.19.4 &gt;=1.18.0
+✔ Kubernetes 1.18.9-eks-d1db3c &gt;=1.16.0
+✔ prerequisites checks passed
+</code></pre></div><p>Install Flux on your cluster with:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>flux bootstrap github <span class="token punctuation">\</span>
+    --owner<span class="token operator">=</span><span class="token variable">${GITHUB_USER}</span> <span class="token punctuation">\</span>
+    --repository<span class="token operator">=</span><span class="token variable">${GITHUB_REPO}</span> <span class="token punctuation">\</span>
+    --branch<span class="token operator">=</span>main <span class="token punctuation">\</span>
+    --personal <span class="token punctuation">\</span>
+    --path<span class="token operator">=</span>clusters/appmesh
+</code></pre></div><p>The bootstrap command commits the manifests for the Flux components in <code>clusters/appmesh/flux-system</code> dir
+and creates a deploy key with read-only access on GitHub, so it can pull changes inside the cluster.</p> <p>Sync your local repository:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> pull origin main
+</code></pre></div><p>Wait for the cluster reconciliation to finish:</p> <div class="language-console extra-class"><pre class="language-text"><code>$ watch flux get kustomizations 
+NAME          	REVISION                                     	READY
+apps          	main/582872832315ffca8cf24232b0f6bcb942131a1f	True
+cluster-addons	main/582872832315ffca8cf24232b0f6bcb942131a1f	True	
+flux-system   	main/582872832315ffca8cf24232b0f6bcb942131a1f	True	
+mesh          	main/582872832315ffca8cf24232b0f6bcb942131a1f	True	
+mesh-addons   	main/582872832315ffca8cf24232b0f6bcb942131a1f	True	
+</code></pre></div><p>Verify that Flagger, Prometheus, AppMesh controller and gateway Helm releases have been installed:</p> <div class="language-console extra-class"><pre class="language-text"><code>$ flux get helmreleases --all-namespaces 
+NAMESPACE      	NAME              	REVISION	READY
+appmesh-gateway	appmesh-gateway   	0.1.5   	True
+appmesh-system 	appmesh-controller	1.2.0   	True
+appmesh-system 	appmesh-prometheus	1.0.0   	True
+appmesh-system 	flagger           	1.2.0   	True
+kube-system    	metrics-server    	5.0.1   	True
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
-      <a href="/prerequisites/" class="prev">Prerequisites</a></span> <span class="next"><a href="/canary/">Canary Releases</a>→
+      <a href="/prerequisites/" class="prev">
+        Prerequisites
+      </a></span> <span class="next"><a href="/canary/">
+        Canary Releases
+      </a>
+      →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.7f17592b.js" defer></script><script src="/assets/js/2.6d2bdb73.js" defer></script><script src="/assets/js/10.25b3cc2a.js" defer></script>
+    <script src="/assets/js/app.a7f8c1ba.js" defer></script><script src="/assets/js/2.f0d0630b.js" defer></script><script src="/assets/js/12.3989a20d.js" defer></script>
   </body>
 </html>

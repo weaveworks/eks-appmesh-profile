@@ -4,87 +4,47 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Canary Tests | EKS GitOps hands-on</title>
-    <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, FluxCD and Flagger">
+    <meta name="generator" content="VuePress 1.7.1">
     <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="/website.css">
+    <link rel="stylesheet" href="/website.css">
+    <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, Flux and Flagger">
     
-    <link rel="preload" href="/assets/css/0.styles.eaa96da7.css" as="style"><link rel="preload" href="/assets/js/app.7f17592b.js" as="script"><link rel="preload" href="/assets/js/2.6d2bdb73.js" as="script"><link rel="preload" href="/assets/js/11.f7ea43dd.js" as="script"><link rel="prefetch" href="/assets/js/10.25b3cc2a.js"><link rel="prefetch" href="/assets/js/12.3db5c125.js"><link rel="prefetch" href="/assets/js/3.4c6d1207.js"><link rel="prefetch" href="/assets/js/4.28a74c59.js"><link rel="prefetch" href="/assets/js/5.a1270f28.js"><link rel="prefetch" href="/assets/js/6.c86693b5.js"><link rel="prefetch" href="/assets/js/7.a7e283f7.js"><link rel="prefetch" href="/assets/js/8.e329f12a.js"><link rel="prefetch" href="/assets/js/9.872b1884.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.eaa96da7.css">
+    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.a7f8c1ba.js" as="script"><link rel="preload" href="/assets/js/2.f0d0630b.js" as="script"><link rel="preload" href="/assets/js/13.44a85897.js" as="script"><link rel="prefetch" href="/assets/js/10.1113bafa.js"><link rel="prefetch" href="/assets/js/11.ad6d44ee.js"><link rel="prefetch" href="/assets/js/12.3989a20d.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.99c53228.js"><link rel="prefetch" href="/assets/js/8.a234c1c1.js"><link rel="prefetch" href="/assets/js/9.62a9d6aa.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.30280a51.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">EKS GitOps hands-on</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">EKS GitOps hands-on</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
     GitHub
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
     GitHub
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Home</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/intro/" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/intro/#what-is-gitops" class="sidebar-link">What is GitOps?</a></li><li class="sidebar-sub-header"><a href="/intro/#what-is-progressive-delivery" class="sidebar-link">What is Progressive Delivery?</a></li></ul></li><li><a href="/prerequisites/" class="sidebar-link">Prerequisites</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/prerequisites/#aws-cli" class="sidebar-link">aws cli</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#aws-iam-authenticator" class="sidebar-link">aws-iam-authenticator</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#github" class="sidebar-link">GitHub</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#eksctl" class="sidebar-link">eksctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#fluxctl" class="sidebar-link">fluxctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#kustomize" class="sidebar-link">kustomize</a></li></ul></li><li><a href="/profile/" class="sidebar-link">App Mesh Profile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/profile/#create-an-eks-cluster" class="sidebar-link">Create an EKS cluster</a></li><li class="sidebar-sub-header"><a href="/profile/#create-a-github-repository" class="sidebar-link">Create a GitHub repository</a></li><li class="sidebar-sub-header"><a href="/profile/#install-app-mesh" class="sidebar-link">Install App Mesh</a></li><li class="sidebar-sub-header"><a href="/profile/#sync-your-local-repository" class="sidebar-link">Sync your local repository</a></li><li class="sidebar-sub-header"><a href="/profile/#kustomize-the-profile" class="sidebar-link">Kustomize the profile</a></li></ul></li><li><a href="/canary/" class="sidebar-link">Canary Releases</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/canary/#canary-custom-resource" class="sidebar-link">Canary custom resource</a></li><li class="sidebar-sub-header"><a href="/canary/#application-bootstrap" class="sidebar-link">Application bootstrap</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-canary-promotion" class="sidebar-link">Automated canary promotion</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-rollback" class="sidebar-link">Automated rollback</a></li><li class="sidebar-sub-header"><a href="/canary/#a-b-testing" class="sidebar-link">A/B Testing</a></li></ul></li><li><a href="/test/" class="active sidebar-link">Canary Tests</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/test/#create-tests" class="sidebar-link">Create tests</a></li><li class="sidebar-sub-header"><a href="/test/#run-tests" class="sidebar-link">Run tests</a></li></ul></li><li><a href="/cleanup/" class="sidebar-link">Cleanup</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="canary-tests"><a href="#canary-tests" aria-hidden="true" class="header-anchor">#</a> Canary Tests</h1> <p>Flagger comes with a testing service that can run acceptance and load tests when configured as a webhook.</p> <h2 id="create-tests"><a href="#create-tests" aria-hidden="true" class="header-anchor">#</a> Create tests</h2> <p>Create a Kustomize patch for the podinfo canary in <code>overlays/canary.yaml</code>:</p> <div class="language-sh extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> <span class="token function">tee</span> overlays/canary.yaml
-apiVersion: flagger.app/v1beta1
-kind: Canary
-metadata:
-  name: podinfo
-  namespace: demo
-spec:
-  analysis:
-    webhooks:
-      - name: acceptance-test-token
-        type: pre-rollout
-        url: http://flagger-loadtester.demo/
-        timeout: 30s
-        metadata:
-          type: <span class="token function">bash</span>
-          cmd: <span class="token string">&quot;curl -sd 'test' http://podinfo-canary.demo:9898/token | grep token&quot;</span>
-      - name: acceptance-test-tracing
-        type: pre-rollout
-        url: http://flagger-loadtester.demo/
-        timeout: 30s
-        metadata:
-          type: <span class="token function">bash</span>
-          cmd: <span class="token string">&quot;curl -s http://podinfo-canary.demo:9898/headers | grep X-Request-Id&quot;</span>
-      - name: load-test
-        url: http://flagger-loadtester.demo/
-        timeout: 5s
-        metadata:
-          cmd: <span class="token string">&quot;hey -z 1m -q 10 -c 2 http://podinfo-canary.demo:9898/&quot;</span>
-EOF
-</code></pre></div><p>Add the canary patch to the kustomization:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> <span class="token function">tee</span> kustomization.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-bases:
-  - base
-  - flux
-patchesStrategicMerge:
-  - overlays/podinfo.yaml
-  - overlays/canary.yaml
-EOF
-</code></pre></div><p>Apply changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> commit -m <span class="token string">&quot;patch canary tests&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> push origin master <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
-</code></pre></div><h2 id="run-tests"><a href="#run-tests" aria-hidden="true" class="header-anchor">#</a> Run tests</h2> <p>Trigger a canary release:</p> <div class="language-yaml extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br></div><pre class="language-yaml"><code>cat &lt;&lt; EOF <span class="token punctuation">|</span> tee overlays/podinfo.yaml
-<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">EKS GitOps hands-on</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/intro/" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/intro/#what-is-gitops" class="sidebar-link">What is GitOps?</a></li><li class="sidebar-sub-header"><a href="/intro/#what-is-progressive-delivery" class="sidebar-link">What is Progressive Delivery?</a></li></ul></li><li><a href="/prerequisites/" class="sidebar-link">Prerequisites</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/prerequisites/#aws-cli" class="sidebar-link">aws cli</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#aws-iam-authenticator" class="sidebar-link">aws-iam-authenticator</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#github" class="sidebar-link">GitHub</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#eksctl" class="sidebar-link">eksctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#flux" class="sidebar-link">flux</a></li></ul></li><li><a href="/profile/" class="sidebar-link">App Mesh Profile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/profile/#create-a-github-repository" class="sidebar-link">Create a GitHub repository</a></li><li class="sidebar-sub-header"><a href="/profile/#cluster-bootstrap" class="sidebar-link">Cluster bootstrap</a></li></ul></li><li><a href="/canary/" class="sidebar-link">Canary Releases</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/canary/#application-bootstrap" class="sidebar-link">Application bootstrap</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-canary-promotion" class="sidebar-link">Automated canary promotion</a></li><li class="sidebar-sub-header"><a href="/canary/#a-b-testing" class="sidebar-link">A/B Testing</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-rollback" class="sidebar-link">Automated rollback</a></li></ul></li><li><a href="/test/" aria-current="page" class="active sidebar-link">Canary Tests</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/test/#define-tests" class="sidebar-link">Define tests</a></li><li class="sidebar-sub-header"><a href="/test/#run-tests" class="sidebar-link">Run tests</a></li><li class="sidebar-sub-header"><a href="/test/#manual-gating" class="sidebar-link">Manual Gating</a></li></ul></li><li><a href="/cleanup/" class="sidebar-link">Cleanup</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="canary-tests"><a href="#canary-tests" aria-hidden="true" class="header-anchor">#</a> Canary Tests</h1> <p>Flagger comes with a testing service that can run acceptance and load tests when configured as a webhook.</p> <h2 id="define-tests"><a href="#define-tests" aria-hidden="true" class="header-anchor">#</a> Define tests</h2> <p>For podinfo, we've setup:</p> <ul><li>an acceptance test by verifying that the app can issue token</li> <li>a load test that generates traffic during the canary analysis</li></ul> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> flagger.app/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Canary
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
   <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfo
-  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">template</span><span class="token punctuation">:</span>
-    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfod
-          <span class="token key atrule">image</span><span class="token punctuation">:</span> stefanprodan/podinfo<span class="token punctuation">:</span>3.1.4
-          <span class="token key atrule">env</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> PODINFO_UI_LOGO
-              <span class="token key atrule">value</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//eks.handson.flagger.dev/cuddle_clap.gif
-EOF
-</code></pre></div><p>Apply changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> commit -m <span class="token string">&quot;update podinfo&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> push origin master <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
-</code></pre></div><p>When the canary analysis starts, Flagger will call the pre-rollout webhooks before routing traffic to the canary.
-If the acceptance test fails, Flagger will retry until the analysis threshold is reached and the canary is rolled back.</p> <p>Watch Flagger logs:</p> <div class="language- extra-class"><div class="highlight-lines"><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-text"><code>$ kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
+  <span class="token key atrule">analysis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">webhooks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> acceptance<span class="token punctuation">-</span>test
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> pre<span class="token punctuation">-</span>rollout
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//flagger<span class="token punctuation">-</span>loadtester.$(NAMESPACE)/
+        <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 30s
+        <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+          <span class="token key atrule">type</span><span class="token punctuation">:</span> bash
+          <span class="token key atrule">cmd</span><span class="token punctuation">:</span> <span class="token string">&quot;curl -sd 'test' http://podinfo-canary.$(NAMESPACE):9898/token | grep token&quot;</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> load<span class="token punctuation">-</span>test
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//flagger<span class="token punctuation">-</span>loadtester.$(NAMESPACE)/
+        <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 5s
+        <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+          <span class="token key atrule">cmd</span><span class="token punctuation">:</span> <span class="token string">&quot;hey -z 1m -q 10 -c 2 http://podinfo-canary.$(NAMESPACE):9898/&quot;</span>
+</code></pre></div><h2 id="run-tests"><a href="#run-tests" aria-hidden="true" class="header-anchor">#</a> Run tests</h2> <p>When the canary analysis starts, Flagger will call the pre-rollout webhooks before routing traffic to the canary.
+If the acceptance test fails, Flagger will retry until the analysis threshold is reached and the canary is rolled back.</p> <p>If the acceptance test passes, then Flagger will start the load test and begin the traffic shifting.</p> <div class="language-console extra-class"><pre class="language-text"><code>$ kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
 
 New revision detected! Scaling up podinfo.test
-Pre-rollout check acceptance-test-token passed
-Pre-rollout check acceptance-test-tracing passed
+Pre-rollout check acceptance-test passed
 Advance podinfo.test canary weight 5
 Advance podinfo.test canary weight 10
 Advance podinfo.test canary weight 15
@@ -98,10 +58,35 @@ Advance podinfo.test canary weight 50
 Copying podinfo.test template spec to podinfo-primary.test
 Routing all traffic to primary
 Promotion completed! Scaling down podinfo.test
+</code></pre></div><h2 id="manual-gating"><a href="#manual-gating" aria-hidden="true" class="header-anchor">#</a> Manual Gating</h2> <p>For manual approval of a canary deployment you can use the <code>confirm-rollout</code> and <code>confirm-promotion</code> webhooks.
+The confirmation rollout hooks are executed before the pre-rollout hooks.
+Flagger will halt the canary traffic shifting and analysis until the confirm webhook returns HTTP status 200.</p> <p>For manual rollback of a canary deployment you can use the <code>rollback</code> webhook.  The rollback hook will be called
+during the analysis and confirmation states.  If a rollback webhook returns a successful HTTP status code, Flagger
+will shift all traffic back to the primary instance and fail the canary.</p> <p>Manual gating with Flagger's tester:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>  <span class="token key atrule">analysis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">webhooks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;confirm gate&quot;</span>
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> confirm<span class="token punctuation">-</span>rollout
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> <span class="token string">&quot;http://flagger-loadtester.$(NAMESPACE)/gate/halt&quot;</span>
+</code></pre></div><p>The <code>/gate/halt</code> returns HTTP 403 thus blocking the rollout.</p> <p>If you have notifications enabled, Flagger will post a message to Slack or MS Teams if a canary rollout is waiting for approval.</p> <p>Change the URL to <code>/gate/approve</code> to start the canary analysis:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>  <span class="token key atrule">analysis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">webhooks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;confirm gate&quot;</span>
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> confirm<span class="token punctuation">-</span>rollout
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> <span class="token string">&quot;http://flagger-loadtester.$(NAMESPACE)/gate/approve&quot;</span>
+</code></pre></div><p>The <code>confirm-promotion</code> hook type can be used to manually approve the canary promotion.
+While the promotion is paused, Flagger will continue to run the metrics checks and load tests.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>  <span class="token key atrule">analysis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">webhooks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;promotion gate&quot;</span>
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> confirm<span class="token punctuation">-</span>promotion
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> <span class="token string">&quot;http://flagger-loadtester.$(NAMESPACE)/gate/halt&quot;</span>
 </code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
-      <a href="/canary/" class="prev">Canary Releases</a></span> <span class="next"><a href="/cleanup/">Cleanup</a>→
+      <a href="/canary/" class="prev">
+        Canary Releases
+      </a></span> <span class="next"><a href="/cleanup/">
+        Cleanup
+      </a>
+      →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.7f17592b.js" defer></script><script src="/assets/js/2.6d2bdb73.js" defer></script><script src="/assets/js/11.f7ea43dd.js" defer></script>
+    <script src="/assets/js/app.a7f8c1ba.js" defer></script><script src="/assets/js/2.f0d0630b.js" defer></script><script src="/assets/js/13.44a85897.js" defer></script>
   </body>
 </html>

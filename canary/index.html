@@ -4,256 +4,155 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Canary Releases | EKS GitOps hands-on</title>
-    <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, FluxCD and Flagger">
+    <meta name="generator" content="VuePress 1.7.1">
     <link rel="icon" href="/favicon.png">
-  <link rel="stylesheet" href="/website.css">
+    <link rel="stylesheet" href="/website.css">
+    <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, Flux and Flagger">
     
-    <link rel="preload" href="/assets/css/0.styles.eaa96da7.css" as="style"><link rel="preload" href="/assets/js/app.7f17592b.js" as="script"><link rel="preload" href="/assets/js/2.6d2bdb73.js" as="script"><link rel="preload" href="/assets/js/6.c86693b5.js" as="script"><link rel="prefetch" href="/assets/js/10.25b3cc2a.js"><link rel="prefetch" href="/assets/js/11.f7ea43dd.js"><link rel="prefetch" href="/assets/js/12.3db5c125.js"><link rel="prefetch" href="/assets/js/3.4c6d1207.js"><link rel="prefetch" href="/assets/js/4.28a74c59.js"><link rel="prefetch" href="/assets/js/5.a1270f28.js"><link rel="prefetch" href="/assets/js/7.a7e283f7.js"><link rel="prefetch" href="/assets/js/8.e329f12a.js"><link rel="prefetch" href="/assets/js/9.872b1884.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.eaa96da7.css">
+    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.a7f8c1ba.js" as="script"><link rel="preload" href="/assets/js/2.f0d0630b.js" as="script"><link rel="preload" href="/assets/js/8.a234c1c1.js" as="script"><link rel="prefetch" href="/assets/js/10.1113bafa.js"><link rel="prefetch" href="/assets/js/11.ad6d44ee.js"><link rel="prefetch" href="/assets/js/12.3989a20d.js"><link rel="prefetch" href="/assets/js/13.44a85897.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.99c53228.js"><link rel="prefetch" href="/assets/js/9.62a9d6aa.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.30280a51.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">EKS GitOps hands-on</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">EKS GitOps hands-on</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
     GitHub
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div> <a href="https://github.com/weaveworks/eks-appmesh-profile" target="_blank" rel="noopener noreferrer" class="repo-link">
     GitHub
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Home</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/intro/" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/intro/#what-is-gitops" class="sidebar-link">What is GitOps?</a></li><li class="sidebar-sub-header"><a href="/intro/#what-is-progressive-delivery" class="sidebar-link">What is Progressive Delivery?</a></li></ul></li><li><a href="/prerequisites/" class="sidebar-link">Prerequisites</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/prerequisites/#aws-cli" class="sidebar-link">aws cli</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#aws-iam-authenticator" class="sidebar-link">aws-iam-authenticator</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#github" class="sidebar-link">GitHub</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#eksctl" class="sidebar-link">eksctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#fluxctl" class="sidebar-link">fluxctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#kustomize" class="sidebar-link">kustomize</a></li></ul></li><li><a href="/profile/" class="sidebar-link">App Mesh Profile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/profile/#create-an-eks-cluster" class="sidebar-link">Create an EKS cluster</a></li><li class="sidebar-sub-header"><a href="/profile/#create-a-github-repository" class="sidebar-link">Create a GitHub repository</a></li><li class="sidebar-sub-header"><a href="/profile/#install-app-mesh" class="sidebar-link">Install App Mesh</a></li><li class="sidebar-sub-header"><a href="/profile/#sync-your-local-repository" class="sidebar-link">Sync your local repository</a></li><li class="sidebar-sub-header"><a href="/profile/#kustomize-the-profile" class="sidebar-link">Kustomize the profile</a></li></ul></li><li><a href="/canary/" class="active sidebar-link">Canary Releases</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/canary/#canary-custom-resource" class="sidebar-link">Canary custom resource</a></li><li class="sidebar-sub-header"><a href="/canary/#application-bootstrap" class="sidebar-link">Application bootstrap</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-canary-promotion" class="sidebar-link">Automated canary promotion</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-rollback" class="sidebar-link">Automated rollback</a></li><li class="sidebar-sub-header"><a href="/canary/#a-b-testing" class="sidebar-link">A/B Testing</a></li></ul></li><li><a href="/test/" class="sidebar-link">Canary Tests</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/test/#create-tests" class="sidebar-link">Create tests</a></li><li class="sidebar-sub-header"><a href="/test/#run-tests" class="sidebar-link">Run tests</a></li></ul></li><li><a href="/cleanup/" class="sidebar-link">Cleanup</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="canary-releases"><a href="#canary-releases" aria-hidden="true" class="header-anchor">#</a> Canary Releases</h1> <p>To experiment with progressive delivery, you'll be using a small Go application called
-<a href="https://github.com/stefanprodan/podinfo" target="_blank" rel="noopener noreferrer">podinfo<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.
-The demo app is exposed outside the cluster with an Envoy proxy (ingress) and an NLB.
-The communication between the ingress and podinfo is managed by Flagger and App Mesh.</p> <div class="language-sh extra-class"><pre class="language-sh"><code>base/demo/
-├── namespace.yaml
-├── ingress <span class="token comment"># Envoy proxy</span>
-│   └── appmesh-gateway.yaml
-├── podinfo <span class="token comment"># Demo app</span>
-│   ├── canary.yaml
-│   ├── deployment.yaml
-│   └── hpa.yaml
-└── tester <span class="token comment"># Flagger test runner</span>
-    ├── deployment.yaml
-    ├── service.yaml
-    └── virtual-node.yaml
-</code></pre></div><p>For apps running on App Mesh, you can configure Flagger with a Kubernetes custom resource
-to automate the conformance testing, analysis and promotion of a canary release.</p> <p><img src="/eks-appmesh-flagger-stack.png" alt="App Mesh Canary Release"></p> <h2 id="canary-custom-resource"><a href="#canary-custom-resource" aria-hidden="true" class="header-anchor">#</a> Canary custom resource</h2> <p>A canary release is described with a Kubernetes custom resource named <strong>Canary</strong>.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> flagger.app/v1beta1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Canary
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfo
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">targetRef</span><span class="token punctuation">:</span>
-    <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
-    <span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfo
-  <span class="token key atrule">autoscalerRef</span><span class="token punctuation">:</span>
-    <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> autoscaling/v2beta1
-    <span class="token key atrule">kind</span><span class="token punctuation">:</span> HorizontalPodAutoscaler
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfo
-  <span class="token key atrule">service</span><span class="token punctuation">:</span>
-    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">9898</span>
-    <span class="token key atrule">meshName</span><span class="token punctuation">:</span> appmesh
-  <span class="token key atrule">analysis</span><span class="token punctuation">:</span>
-    <span class="token key atrule">interval</span><span class="token punctuation">:</span> 10s
-    <span class="token key atrule">stepWeight</span><span class="token punctuation">:</span> <span class="token number">5</span>
-    <span class="token key atrule">maxWeight</span><span class="token punctuation">:</span> <span class="token number">50</span>
-    <span class="token key atrule">threshold</span><span class="token punctuation">:</span> <span class="token number">5</span>
-    <span class="token key atrule">metrics</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> request<span class="token punctuation">-</span>success<span class="token punctuation">-</span>rate
-      <span class="token key atrule">thresholdRange</span><span class="token punctuation">:</span>
-        <span class="token key atrule">min</span><span class="token punctuation">:</span> <span class="token number">99</span>
-      <span class="token key atrule">interval</span><span class="token punctuation">:</span> 1m
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> request<span class="token punctuation">-</span>duration
-      <span class="token key atrule">thresholdRange</span><span class="token punctuation">:</span>
-        <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token number">500</span>
-      <span class="token key atrule">interval</span><span class="token punctuation">:</span> 1m
-    <span class="token key atrule">webhooks</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> load<span class="token punctuation">-</span>test
-        <span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//flagger<span class="token punctuation">-</span>loadtester.demo/
-        <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-          <span class="token key atrule">cmd</span><span class="token punctuation">:</span> <span class="token string">&quot;hey -z 2m -q 10 -c 2 http://podinfo.demo:9898/&quot;</span>
-</code></pre></div><p>Flagger takes a Kubernetes deployment and optionally a horizontal pod autoscaler (HPA),
-then creates a series of objects (Kubernetes deployments, ClusterIP services, App Mesh virtual nodes and services).
-These objects expose the application on the mesh and drive the canary analysis and promotion.</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># applied </span>
-deployment.apps/podinfo
-horizontalpodautoscaler.autoscaling/podinfo
-canary.flagger.app/podinfo
-
-<span class="token comment"># generated Kubernetes objects</span>
-deployment.apps/podinfo-primary
-horizontalpodautoscaler.autoscaling/podinfo-primary
-service/podinfo
-service/podinfo-canary
-service/podinfo-primary
-
-<span class="token comment"># generated App Mesh objects</span>
-virtualnode.appmesh.k8s.aws/podinfo
-virtualnode.appmesh.k8s.aws/podinfo-canary
-virtualnode.appmesh.k8s.aws/podinfo-primary
-virtualservice.appmesh.k8s.aws/podinfo.test
-virtualservice.appmesh.k8s.aws/podinfo-canary.test
-</code></pre></div><h2 id="application-bootstrap"><a href="#application-bootstrap" aria-hidden="true" class="header-anchor">#</a> Application bootstrap</h2> <p>Install the demo app by setting <code>fluxcd.io/ignore</code> to <code>false</code> in <code>base/demo/namespace.yaml</code>:</p> <div class="language-sh extra-class"><div class="highlight-lines"><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br></div><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> <span class="token function">tee</span> base/demo/namespace.yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: demo
-  annotations:
-    fluxcd.io/ignore: <span class="token string">&quot;false&quot;</span>
-  labels:
-    appmesh.k8s.aws/sidecarInjectorWebhook: enabled
-EOF
-</code></pre></div><p>Apply changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> commit -m <span class="token string">&quot;init demo&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> push origin master <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
-</code></pre></div><p>Wait for Flagger to initialize the canary:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> kubectl -n demo get canary
-</code></pre></div><p>Find the ingress public address with:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">URL</span><span class="token operator">=</span><span class="token string">&quot;http://<span class="token variable"><span class="token variable">$(</span>kubectl -n demo get svc/appmesh-gateway -ojson <span class="token operator">|</span> jq -r <span class="token string">&quot;.status.loadBalancer.ingress[].hostname&quot;</span><span class="token variable">)</span></span>&quot;</span>
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">EKS GitOps hands-on</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/intro/" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/intro/#what-is-gitops" class="sidebar-link">What is GitOps?</a></li><li class="sidebar-sub-header"><a href="/intro/#what-is-progressive-delivery" class="sidebar-link">What is Progressive Delivery?</a></li></ul></li><li><a href="/prerequisites/" class="sidebar-link">Prerequisites</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/prerequisites/#aws-cli" class="sidebar-link">aws cli</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#aws-iam-authenticator" class="sidebar-link">aws-iam-authenticator</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#github" class="sidebar-link">GitHub</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#eksctl" class="sidebar-link">eksctl</a></li><li class="sidebar-sub-header"><a href="/prerequisites/#flux" class="sidebar-link">flux</a></li></ul></li><li><a href="/profile/" class="sidebar-link">App Mesh Profile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/profile/#create-a-github-repository" class="sidebar-link">Create a GitHub repository</a></li><li class="sidebar-sub-header"><a href="/profile/#cluster-bootstrap" class="sidebar-link">Cluster bootstrap</a></li></ul></li><li><a href="/canary/" aria-current="page" class="active sidebar-link">Canary Releases</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/canary/#application-bootstrap" class="sidebar-link">Application bootstrap</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-canary-promotion" class="sidebar-link">Automated canary promotion</a></li><li class="sidebar-sub-header"><a href="/canary/#a-b-testing" class="sidebar-link">A/B Testing</a></li><li class="sidebar-sub-header"><a href="/canary/#automated-rollback" class="sidebar-link">Automated rollback</a></li></ul></li><li><a href="/test/" class="sidebar-link">Canary Tests</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/test/#define-tests" class="sidebar-link">Define tests</a></li><li class="sidebar-sub-header"><a href="/test/#run-tests" class="sidebar-link">Run tests</a></li><li class="sidebar-sub-header"><a href="/test/#manual-gating" class="sidebar-link">Manual Gating</a></li></ul></li><li><a href="/cleanup/" class="sidebar-link">Cleanup</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="canary-releases"><a href="#canary-releases" aria-hidden="true" class="header-anchor">#</a> Canary Releases</h1> <p>To experiment with progressive delivery, you'll be using a small Go application called
+<a href="https://github.com/stefanprodan/podinfo" target="_blank" rel="noopener noreferrer">podinfo<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.
+The demo app is exposed outside the cluster with App Mesh Gateway.
+The communication between the ingress and podinfo is managed by Flagger and App Mesh.</p> <p>For apps running on App Mesh, you can configure Flagger with a Kubernetes custom resource
+to automate the conformance testing, analysis and promotion of a canary release.</p> <p><img src="/gitops-appmesh-stack.png" alt="App Mesh Canary Release"></p> <h2 id="application-bootstrap"><a href="#application-bootstrap" aria-hidden="true" class="header-anchor">#</a> Application bootstrap</h2> <p>The application manifests are comprised of a Kubernetes deployment, a horizontal pod autoscaler,
+a gateway route (AppMesh custom resource) and release polices (Flagger custom resources).</p> <div class="language- extra-class"><pre class="language-text"><code>./apps/podinfo/
+├── abtest.yaml
+├── canary.yaml
+├── deployment.yaml
+├── gateway-route.yaml
+├── hpa.yaml
+└── kustomization.yaml
+</code></pre></div><p>Wait for Flagger to initialize the canary:</p> <div class="language-console extra-class"><pre class="language-text"><code>$ watch kubectl -n apps get canary
+NAME      STATUS      WEIGHT   LASTTRANSITIONTIME
+podinfo   Initialized 0        2020-11-14T12:03:39Z
+</code></pre></div><p>Find the AppMesh Gateway public address with:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">URL</span><span class="token operator">=</span><span class="token string">&quot;http://<span class="token variable"><span class="token variable">$(</span>kubectl -n appmesh-gateway get svc/appmesh-gateway -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.status.loadBalancer.ingress[0].hostname}'</span><span class="token variable">)</span></span>&quot;</span>
 <span class="token builtin class-name">echo</span> <span class="token variable">$URL</span>
-</code></pre></div><p>Wait for the ingress DNS to propagate:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> <span class="token function">host</span> <span class="token variable">$URL</span>
-</code></pre></div><p>Wait for the podinfo to become accessible:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> <span class="token function">curl</span> -s <span class="token variable">$URL</span>
-</code></pre></div><p>When the ingres address becomes available, open it in a browser and you'll see the podinfo UI.</p> <p><img src="/podinfo.png" alt="podinfo"></p> <h2 id="automated-canary-promotion"><a href="#automated-canary-promotion" aria-hidden="true" class="header-anchor">#</a> Automated canary promotion</h2> <p>When you deploy a new podinfo version, Flagger gradually shifts traffic to the canary,
+</code></pre></div><p>Wait for the DNS to propagate and podinfo to become accessible:</p> <div class="language-console extra-class"><pre class="language-text"><code>$ watch curl -s ${URL}
+{
+  &quot;hostname&quot;: &quot;podinfo-primary-5cf44b9799-lgq79&quot;,
+  &quot;version&quot;: &quot;5.0.0&quot;
+}
+</code></pre></div><p>When the URL becomes available, open it in a browser and you'll see the podinfo UI.</p> <p><img src="podinfo-500.png" alt="podinfo"></p> <h2 id="automated-canary-promotion"><a href="#automated-canary-promotion" aria-hidden="true" class="header-anchor">#</a> Automated canary promotion</h2> <p>When you deploy a new podinfo version, Flagger gradually shifts traffic to the canary,
 and at the same time, measures the requests success rate as well as the average response duration.
-Based on an analysis of these App Mesh provided metrics, a canary deployment is either promoted or rolled back.</p> <p>Create a Kustomize patch for the podinfo deployment in <code>overlays/podinfo.yaml</code>:</p> <div class="language-sh extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br></div><pre class="language-sh"><code><span class="token function">mkdir</span> -p overlays <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> <span class="token function">tee</span> overlays/podinfo.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: podinfo
-  namespace: demo
-spec:
-  template:
-    spec:
-      containers:
-        - name: podinfod
-          image: stefanprodan/podinfo:3.1.1
-          env:
-            - name: PODINFO_UI_LOGO
-              value: https://eks.handson.flagger.dev/cuddle_bunny.gif
-EOF
-</code></pre></div><p>Add the patch to the kustomization file:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> EOF <span class="token operator">|</span> <span class="token function">tee</span> kustomization.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-bases:
-  - base
-  - flux
-patchesStrategicMerge:
-  - overlays/podinfo.yaml
-EOF
-</code></pre></div><p>Apply changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> commit -m <span class="token string">&quot;patch podinfo&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> push origin master <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
-</code></pre></div><p>When Flagger detects that the deployment revision changed it will start a new rollout.
-You can monitor the traffic shifting with:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> kubectl -n demo get canaries
-</code></pre></div><p>Watch Flagger logs:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>kubectl -n appmesh-system logs deployment/flagger -f <span class="token operator">|</span> jq .msg
-</code></pre></div><p>Lastly, open up podinfo in the browser.
-You'll see that as Flagger shifts more traffic to the canary according to the policy in the Canary object,
+Based on an analysis of these App Mesh provided metrics, a canary deployment is either promoted or rolled back.</p> <p>Pull the changes from GitHub:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> pull origin main
+</code></pre></div><p>The canary analysis is defined in <code>./apps/podinfo/canary.yaml</code>:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>  <span class="token key atrule">analysis</span><span class="token punctuation">:</span>
+    <span class="token comment"># max traffic percentage routed to canary</span>
+    <span class="token key atrule">maxWeight</span><span class="token punctuation">:</span> <span class="token number">50</span>
+    <span class="token comment"># canary increment step</span>
+    <span class="token key atrule">stepWeight</span><span class="token punctuation">:</span> <span class="token number">5</span>
+    <span class="token comment"># time to wait between traffic increments</span>
+    <span class="token key atrule">interval</span><span class="token punctuation">:</span> 15s
+    <span class="token comment"># max number of failed metric checks before rollback</span>
+    <span class="token key atrule">threshold</span><span class="token punctuation">:</span> <span class="token number">5</span>
+    <span class="token comment"># AppMesh Prometheus checks</span>
+    <span class="token key atrule">metrics</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> request<span class="token punctuation">-</span>success<span class="token punctuation">-</span>rate
+        <span class="token comment"># minimum req success rate percentage (non 5xx)</span>
+        <span class="token key atrule">thresholdRange</span><span class="token punctuation">:</span>
+          <span class="token key atrule">min</span><span class="token punctuation">:</span> <span class="token number">99</span>
+        <span class="token key atrule">interval</span><span class="token punctuation">:</span> 1m
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> request<span class="token punctuation">-</span>duration
+        <span class="token comment"># maximum req duration in milliseconds</span>
+        <span class="token key atrule">thresholdRange</span><span class="token punctuation">:</span>
+          <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token number">500</span>
+        <span class="token key atrule">interval</span><span class="token punctuation">:</span> 1m
+</code></pre></div><p>Bump podinfo version from <code>5.0.0</code> to <code>5.0.1</code>:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>yq w -i ./apps/podinfo/kustomization.yaml images<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.newTag <span class="token number">5.0</span>.1
+</code></pre></div><p>Commit and push changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+<span class="token function">git</span> commit -m <span class="token string">&quot;podinfo 5.0.1&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+<span class="token function">git</span> push origin main
+</code></pre></div><p>Tell Flux to pull the changes or wait one minute for Flux to detect the changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>flux reconcile <span class="token builtin class-name">source</span> <span class="token function">git</span> flux-system
+</code></pre></div><p>Wait for the cluster reconciliation to finish:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> flux get kustomizations
+</code></pre></div><p>When Flagger detects that the deployment revision changed, it will start a new rollout.
+You can monitor the traffic shifting with:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> kubectl -n apps get canary
+</code></pre></div><p>Watch Flagger logs:</p> <div class="language-console extra-class"><pre class="language-text"><code>$ kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
+New revision detected! Scaling up podinfo.apps
+Starting canary analysis for podinfo.apps
+Pre-rollout check acceptance-test passed
+Advance podinfo.apps canary weight 5
+Advance podinfo.apps canary weight 10
+Advance podinfo.apps canary weight 15
+Advance podinfo.apps canary weight 20
+Advance podinfo.apps canary weight 25
+Advance podinfo.apps canary weight 30
+Advance podinfo.apps canary weight 35
+Advance podinfo.apps canary weight 40
+Advance podinfo.apps canary weight 45
+Advance podinfo.apps canary weight 50
+Copying podinfo.apps template spec to podinfo-primary.apps
+Routing all traffic to primary
+Promotion completed! Scaling down podinfo.apps
+</code></pre></div><p>Lastly, open up podinfo in the browser. You'll see that as Flagger shifts more traffic
+to the canary according to the policy in the Canary object,
 we see requests going to our new version of the app.</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token builtin class-name">echo</span> <span class="token variable">$URL</span>
-</code></pre></div><h2 id="automated-rollback"><a href="#automated-rollback" aria-hidden="true" class="header-anchor">#</a> Automated rollback</h2> <p>During the canary analysis you can generate HTTP 500 errors and high latency to test if Flagger pauses and
-rolls back the faulted version.</p> <p>Trigger another canary release:</p> <div class="language-yaml extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br></div><pre class="language-yaml"><code>cat &lt;&lt; EOF <span class="token punctuation">|</span> tee overlays/podinfo.yaml
-<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfo
-  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">template</span><span class="token punctuation">:</span>
-    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfod
-          <span class="token key atrule">image</span><span class="token punctuation">:</span> stefanprodan/podinfo<span class="token punctuation">:</span>3.1.2
-          <span class="token key atrule">env</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> PODINFO_UI_LOGO
-              <span class="token key atrule">value</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//eks.handson.flagger.dev/cuddle_bunny.gif
-EOF
-</code></pre></div><p>Apply changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> commit -m <span class="token string">&quot;update podinfo&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> push origin master <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
-</code></pre></div><p>Exec into the tester pod and generate HTTP 500 errors:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>kubectl -n demo <span class="token builtin class-name">exec</span> -it <span class="token variable"><span class="token variable">$(</span>kubectl -n demo get pods -o name <span class="token operator">|</span> <span class="token function">grep</span> -m1 flagger-loadtester <span class="token operator">|</span> <span class="token function">cut</span> -d<span class="token string">'/'</span> -f <span class="token number">2</span><span class="token variable">)</span></span> <span class="token function">bash</span>
-
-$ hey -z 1m -c <span class="token number">5</span> -q <span class="token number">5</span> http://podinfo-canary.demo:9898/status/500
-$ hey -z 1m -c <span class="token number">5</span> -q <span class="token number">5</span> http://podinfo-canary.demo:9898/delay/1
-</code></pre></div><p>When the number of failed checks reaches the canary analysis threshold, the traffic is routed back to the primary and
-the canary is scaled to zero.</p> <p>Watch Flagger logs with:</p> <div class="language- extra-class"><pre class="language-text"><code>$ kubectl -n appmesh-system logs deployment/flagger -f | jq .msg
-
- Starting canary analysis for podinfo.prod
- Advance podinfo.test canary weight 5
- Advance podinfo.test canary weight 10
- Advance podinfo.test canary weight 15
- Halt podinfo.test advancement success rate 69.17% &lt; 99%
- Halt podinfo.test advancement success rate 61.39% &lt; 99%
- Halt podinfo.test advancement success rate 55.06% &lt; 99%
- Halt podinfo.test advancement request duration 1.20s &gt; 0.5s
- Halt podinfo.test advancement request duration 1.45s &gt; 0.5s
- Rolling back podinfo.prod failed checks threshold reached 5
- Canary failed! Scaling down podinfo.test
 </code></pre></div><h2 id="a-b-testing"><a href="#a-b-testing" aria-hidden="true" class="header-anchor">#</a> A/B Testing</h2> <p>Besides weighted routing, Flagger can be configured to route traffic to the canary based on HTTP match conditions.
 In an A/B testing scenario, you'll be using HTTP headers or cookies to target a certain segment of your users.
-This is particularly useful for frontend applications that require session affinity.</p> <p>Create a Kustomize patch for the canary configuration by removing the max/step weight and adding a HTTP header match condition and iterations:</p> <div class="language-sh extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br></div><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span>EOF <span class="token operator">|</span> <span class="token function">tee</span> overlays/canary.yaml
-apiVersion: flagger.app/v1beta2
-kind: Canary
-metadata:
-  name: podinfo
-  namespace: demo
-spec:
-  analysis:
-    interval: 30s
-    threshold: <span class="token number">10</span>
-    iterations: <span class="token number">10</span>
-    match:
-      - headers:
-          user-agent:
-            regex: <span class="token string">&quot;.*Chrome.*&quot;</span>
-EOF
-</code></pre></div><p>The above configuration will run a canary analysis for five minutes (<code>interval * iterations</code>)
-targeting users with Chromium-based browsers.</p> <p>Add the canary patch to the kustomization:</p> <div class="language-sh extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br></div><pre class="language-sh"><code><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span>EOF <span class="token operator">|</span> <span class="token function">tee</span> kustomization.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-bases:
-  - base
-  - flux
-patchesStrategicMerge:
-  - overlays/podinfo.yaml
-  - overlays/canary.yaml
-EOF
-</code></pre></div><p>Trigger another canary release:</p> <div class="language-yaml extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br></div><pre class="language-yaml"><code>cat &lt;&lt;EOF <span class="token punctuation">|</span> tee overlays/podinfo.yaml
-<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfo
-  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">template</span><span class="token punctuation">:</span>
-    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> podinfod
-          <span class="token key atrule">image</span><span class="token punctuation">:</span> stefanprodan/podinfo<span class="token punctuation">:</span>3.1.3
-          <span class="token key atrule">env</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> PODINFO_UI_LOGO
-              <span class="token key atrule">value</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//eks.handson.flagger.dev/cuddle_bunny.gif
-EOF
-</code></pre></div><p>Apply changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> commit -m <span class="token string">&quot;update podinfo&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-<span class="token function">git</span> push origin master <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
-fluxctl <span class="token function">sync</span> --k8s-fwd-ns flux
-</code></pre></div><p>Flagger detects that the deployment revision changed and starts the A/B test:</p> <div class="language-text extra-class"><pre class="language-text"><code>kubectl -n appmesh-system logs deploy/flagger -f | jq .msg
-
-New revision detected! Starting canary analysis for podinfo.test
-Advance podinfo.test canary iteration 1/10
-Advance podinfo.test canary iteration 2/10
-Advance podinfo.test canary iteration 3/10
-Advance podinfo.test canary iteration 4/10
-Advance podinfo.test canary iteration 5/10
-Advance podinfo.test canary iteration 6/10
-Advance podinfo.test canary iteration 7/10
-Advance podinfo.test canary iteration 8/10
-Advance podinfo.test canary iteration 9/10
-Advance podinfo.test canary iteration 10/10
-Copying podinfo.test template spec to podinfo-primary.test
-Waiting for podinfo-primary.test rollout to finish: 1 of 2 updated replicas are available
-Routing all traffic to primary
-Promotion completed! Scaling down podinfo.test
-</code></pre></div><p>While the analysis is running, if you use a Chromium-based browser to access podinfo UI, you'll be redirected
-to v3.1.3 wile using Firefox or Safari you'll get v3.1.2.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+This is particularly useful for frontend applications that require session affinity.</p> <p>Enable A/B testing:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>yq w -i ./apps/podinfo/kustomization.yaml resources<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> abtest.yaml
+</code></pre></div><p>The above configuration will run a canary analysis targeting users based on their browser user-agent.</p> <p>The A/B test routing is defined in <code>./apps/podinfo/abtest.yaml</code>:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>  <span class="token key atrule">analysis</span><span class="token punctuation">:</span>
+    <span class="token comment"># number of iterations</span>
+    <span class="token key atrule">iterations</span><span class="token punctuation">:</span> <span class="token number">10</span>
+    <span class="token comment"># time to wait between iterations</span>
+    <span class="token key atrule">interval</span><span class="token punctuation">:</span> 15s
+    <span class="token comment"># max number of failed metric checks before rollback</span>
+    <span class="token key atrule">threshold</span><span class="token punctuation">:</span> <span class="token number">5</span>
+    <span class="token comment"># user segmentation</span>
+    <span class="token key atrule">match</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">headers</span><span class="token punctuation">:</span>
+          <span class="token key atrule">user-agent</span><span class="token punctuation">:</span>
+            <span class="token key atrule">regex</span><span class="token punctuation">:</span> <span class="token string">&quot;.*(Firefox|curl).*&quot;</span>
+</code></pre></div><p>Bump podinfo version to <code>5.0.2</code>:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>yq w -i ./apps/podinfo/kustomization.yaml images<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.newTag <span class="token number">5.0</span>.2
+</code></pre></div><p>Commit and push changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+<span class="token function">git</span> commit -m <span class="token string">&quot;podinfo 5.0.2&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+<span class="token function">git</span> push origin main
+</code></pre></div><p>Tell Flux to pull changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>flux reconcile <span class="token builtin class-name">source</span> <span class="token function">git</span> flux-system
+</code></pre></div><p>Wait for Flagger to start the A/B test:</p> <div class="language-console extra-class"><pre class="language-text"><code>$ kubectl -n appmesh-system logs deploy/flagger -f | jq .msg
+New revision detected! Scaling up podinfo.apps
+Starting canary analysis for podinfo.apps
+Pre-rollout check acceptance-test passed
+Advance podinfo.apps canary iteration 1/10
+</code></pre></div><p>Open the podinfo URL in Firefox and you will be routed to version <code>5.0.2</code> or use curl:</p> <div class="language-console extra-class"><pre class="language-text"><code>$ curl ${URL}
+{
+  &quot;hostname&quot;: &quot;podinfo-6cf9c5fd49-9fzbt&quot;,
+  &quot;version&quot;: &quot;5.0.2&quot;
+}
+</code></pre></div><h2 id="automated-rollback"><a href="#automated-rollback" aria-hidden="true" class="header-anchor">#</a> Automated rollback</h2> <p>During the canary analysis you can generate HTTP 500 errors and high latency
+to test if Flagger pauses and rolls back the faulted version.</p> <p>Bump podinfo version to <code>5.0.3</code>:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>yq w -i ./apps/podinfo/kustomization.yaml images<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.newTag <span class="token number">5.0</span>.3
+</code></pre></div><p>Commit and push changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+<span class="token function">git</span> commit -m <span class="token string">&quot;podinfo 5.0.3&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+<span class="token function">git</span> push origin main
+</code></pre></div><p>Tell Flux to pull changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>flux reconcile <span class="token builtin class-name">source</span> <span class="token function">git</span> flux-system
+</code></pre></div><p>Generate HTTP 500 errors every 30s with curl:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">watch</span> -n <span class="token number">0.5</span> <span class="token function">curl</span> <span class="token variable">${URL}</span>/status/500
+</code></pre></div><p>When the number of failed checks reaches the canary analysis threshold,
+the traffic is routed back to the primary and the canary is scaled to zero.</p> <div class="language-console extra-class"><pre class="language-text"><code>$ kubectl -n appmesh-system logs deploy/flagger -f | jq .msg
+Advance podinfo.apps canary iteration 2/10
+Halt podinfo.apps advancement success rate 98.82% &lt; 99%
+Halt podinfo.apps advancement success rate 97.93% &lt; 99%
+Halt podinfo.apps advancement success rate 97.51% &lt; 99%
+Halt podinfo.apps advancement success rate 98.08% &lt; 99%
+Halt podinfo.apps advancement success rate 96.88% &lt; 99%
+Rolling back podinfo.apps failed checks threshold reached 5
+Canary failed! Scaling down podinfo.apps
+</code></pre></div><p>If you go back to Firefox, you'll see that the podinfo version has been rollback to <code>5.0.1</code>.
+Note that on Chrome or Safari, users haven't been affected by the faulty version,
+as they were not routed to <code>5.0.2</code> during the analysis.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
-      <a href="/profile/" class="prev">App Mesh Profile</a></span> <span class="next"><a href="/test/">Canary Tests</a>→
+      <a href="/profile/" class="prev">
+        App Mesh Profile
+      </a></span> <span class="next"><a href="/test/">
+        Canary Tests
+      </a>
+      →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.7f17592b.js" defer></script><script src="/assets/js/2.6d2bdb73.js" defer></script><script src="/assets/js/6.c86693b5.js" defer></script>
+    <script src="/assets/js/app.a7f8c1ba.js" defer></script><script src="/assets/js/2.f0d0630b.js" defer></script><script src="/assets/js/8.a234c1c1.js" defer></script>
   </body>
 </html>
