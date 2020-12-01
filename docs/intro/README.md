@@ -23,20 +23,18 @@ when disaster strikes, the whole infrastructure can be quickly restored without 
 [Kubernetes anti-patterns: Let's do GitOps, not CIOps!](https://www.weave.works/blog/kubernetes-anti-patterns-let-s-do-gitops-not-ciops)
 :::
 
-In order to apply the GitOps model to Kubernetes you need three things:
+In order to apply the GitOps model to Kubernetes you need:
 
-* a Git repository with your workloads definitions in YAML format,
-Helm charts and any other Kubernetes custom resource that defines your cluster desired state
 * a container registry where your CI system pushes immutable images
 (no *latest* tags, use *semantic versioning* or git *commit sha*)
-* a Kubernetes controller that does a two-way synchronization:
-    * watches for changes in the config repository and applies them to your cluster
-    * watches the container registry for new images and  updates the workload
-        definitions based on deployment policies
+* a Git repository with your workloads definitions in YAML format,
+Helm charts and any other Kubernetes custom resource that defines your cluster desired state
+* Kubernetes controller that:
+    * watches for changes in the config repository
+    * reconciles the cluster state as described in the repository
 
-In this workshop you'll be using GitHub to host the config repo, Docker Hub as the container registry,
-[Flux](https://github.com/fluxcd/flux) as the GitOps controller and
-[Helm Operator](https://github.com/fluxcd/helm-operator) for app lifecycle management.
+In this workshop you'll be using GitHub to host the config repository and
+[Flux](https://github.com/fluxcd/flux2) as the GitOps delivery solution.
 
 ## What is Progressive Delivery?
 

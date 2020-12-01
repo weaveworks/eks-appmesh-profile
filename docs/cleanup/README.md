@@ -7,16 +7,28 @@ title: Cleanup
 This lab takes about $7/day to run on AWS.
 If you have a $30 credit, you can run your cluster for 4 days before it will start counting toward your AWS bill.
 
-To cleanup, run the following:
+Suspend the cluster reconciliation:
+
 ```sh
-# Stop flux
-kubectl delete ns flux
-kubectl delete ns demo
+flux suspend kustomization cluster-addons
+```
 
-kubectl delete mesh.appmesh.k8s.aws --all
-# Allow some time for the appmesh k8s controller to cleanup resources in AWS
-sleep 30
+Delete the demo app and mesh addons:
 
+```sh
+flux delete kustomization apps -s
+flux delete kustomization mesh-addons -s
+```
+
+Delete the AppMesh mesh:
+
+```sh
+kubectl delete mesh --all
+```
+
+Delete the EKS cluster:
+
+```sh
 eksctl delete cluster \
   --name appmesh \
   --region us-west-2

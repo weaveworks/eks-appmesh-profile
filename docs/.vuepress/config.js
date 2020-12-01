@@ -1,6 +1,6 @@
 module.exports = {
     title: 'EKS GitOps hands-on',
-    description: 'Progressive Delivery for Amazon EKS with App Mesh, FluxCD and Flagger',
+    description: 'Progressive Delivery for Amazon EKS with App Mesh, Flux and Flagger',
     themeConfig: {
         displayAllHeaders: true,
         repo: 'weaveworks/eks-appmesh-profile',
