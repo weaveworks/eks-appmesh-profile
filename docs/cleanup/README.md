@@ -20,9 +20,10 @@ flux delete kustomization apps -s
 flux delete kustomization mesh-addons -s
 ```
 
-Delete the AppMesh mesh:
+Delete the AppMesh gateway and mesh:
 
 ```sh
+kubectl delete virtualgateways --all -A
 kubectl delete mesh --all
 ```
 
