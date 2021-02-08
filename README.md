@@ -93,3 +93,13 @@ Open your browser and navigate to `localhost:3000`.
 
 ![AWS App Mesh: Control Plane](https://user-images.githubusercontent.com/3797675/68316268-da565300-00c1-11ea-96b5-20634fed2c46.png)
 ![AWS App Mesh: Data Plane](https://user-images.githubusercontent.com/3797675/68325902-0c23e580-00d3-11ea-8f2a-f10f972fe0ac.png)
+
+## Get in touch
+
+[Create an issue](https://github.com/weaveworks/eks-appmesh-profile/issues/new), or
+login to [Weave Community Slack (#eksctl)][slackchan] ([signup][slackjoin]).
+
+[slackjoin]: https://slack.weave.works/
+[slackchan]: https://weave-community.slack.com/messages/eksctl/
+
+Weaveworks follows the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md). Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting a Weaveworks project maintainer, or Alexis Richardson (alexis@weave.works).
