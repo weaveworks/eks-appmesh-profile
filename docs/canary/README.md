@@ -238,7 +238,7 @@ to test if Flagger pauses and rolls back the faulted version.
 Bump podinfo version to `5.0.3`:
 
 ```sh
-yq w -i ./apps/podinfo/kustomization.yaml images[0].newTag 5.0.3
+yq e '.images[0].newTag="5.0.3"' -i ./apps/podinfo/kustomization.yaml
 ```
 
 Commit and push changes:
