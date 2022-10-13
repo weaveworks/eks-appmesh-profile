@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/website.css">
     <meta name="description" content="Progressive Delivery for Amazon EKS with App Mesh, Flux and Flagger">
     
-    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.e6ee9d4e.js" as="script"><link rel="preload" href="/assets/js/2.f0d0630b.js" as="script"><link rel="preload" href="/assets/js/8.31dda8a2.js" as="script"><link rel="prefetch" href="/assets/js/10.ff610165.js"><link rel="prefetch" href="/assets/js/11.18106ee5.js"><link rel="prefetch" href="/assets/js/12.4c864820.js"><link rel="prefetch" href="/assets/js/13.a9a95ba7.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.bffc6139.js"><link rel="prefetch" href="/assets/js/9.7d9e3ffe.js">
+    <link rel="preload" href="/assets/css/0.styles.30280a51.css" as="style"><link rel="preload" href="/assets/js/app.ec831a7c.js" as="script"><link rel="preload" href="/assets/js/2.4768ff76.js" as="script"><link rel="preload" href="/assets/js/8.39515cac.js" as="script"><link rel="prefetch" href="/assets/js/10.1113bafa.js"><link rel="prefetch" href="/assets/js/11.b618e388.js"><link rel="prefetch" href="/assets/js/12.4c864820.js"><link rel="prefetch" href="/assets/js/13.17a22e3e.js"><link rel="prefetch" href="/assets/js/3.94e48b06.js"><link rel="prefetch" href="/assets/js/4.b1298e77.js"><link rel="prefetch" href="/assets/js/5.d66a79c6.js"><link rel="prefetch" href="/assets/js/6.b24f61e8.js"><link rel="prefetch" href="/assets/js/7.bffc6139.js"><link rel="prefetch" href="/assets/js/9.aa90bc54.js">
     <link rel="stylesheet" href="/assets/css/0.styles.30280a51.css">
   </head>
   <body>
@@ -126,7 +126,7 @@ Advance podinfo.apps canary iteration 1/10
   &quot;version&quot;: &quot;5.0.2&quot;
 }
 </code></pre></div><h2 id="automated-rollback"><a href="#automated-rollback" aria-hidden="true" class="header-anchor">#</a> Automated rollback</h2> <p>During the canary analysis you can generate HTTP 500 errors and high latency
-to test if Flagger pauses and rolls back the faulted version.</p> <p>Bump podinfo version to <code>5.0.3</code>:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>yq w -i ./apps/podinfo/kustomization.yaml images<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.newTag <span class="token number">5.0</span>.3
+to test if Flagger pauses and rolls back the faulted version.</p> <p>Bump podinfo version to <code>5.0.3</code>:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>yq e <span class="token string">'.images[0].newTag=&quot;5.0.3&quot;'</span> -i ./apps/podinfo/kustomization.yaml
 </code></pre></div><p>Commit and push changes:</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> -A <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
 <span class="token function">git</span> commit -m <span class="token string">&quot;podinfo 5.0.3&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
 <span class="token function">git</span> push origin main
@@ -153,6 +153,6 @@ as they were not routed to <code>5.0.3</code> during the analysis.</p></div> <fo
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.e6ee9d4e.js" defer></script><script src="/assets/js/2.f0d0630b.js" defer></script><script src="/assets/js/8.31dda8a2.js" defer></script>
+    <script src="/assets/js/app.ec831a7c.js" defer></script><script src="/assets/js/2.4768ff76.js" defer></script><script src="/assets/js/8.39515cac.js" defer></script>
   </body>
 </html>
